@@ -178,18 +178,6 @@
       <Association Name="DONHANG_THANHTOAN" Member="DONHANG" ThisKey="MADH" OtherKey="MADH" Type="DONHANG" IsForeignKey="true" />
     </Type>
   </Table>
-  <Function Name="dbo.SP_TOP10_BANCHAY" Method="SP_TOP10_BANCHAY">
-    <ElementType Name="SP_TOP10_BANCHAYResult">
-      <Column Name="TENSP" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="TONGSLBAN" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TONGDOANHTHU" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SP_HOTRO_UPDATE" Method="SP_HOTRO_UPDATE">
-    <Parameter Name="MAYC_MAHOA" Parameter="mAYC_MAHOA" Type="System.String" DbType="VarChar(10)" />
-    <Parameter Name="TRANGTHAIMOI" Parameter="tRANGTHAIMOI" Type="System.String" DbType="NVarChar(50)" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.SP_HOTRO_CHUAXULI" Method="SP_HOTRO_CHUAXULI">
     <ElementType Name="SP_HOTRO_CHUAXULIResult">
       <Column Name="MAYC_MAHOA" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
@@ -197,6 +185,33 @@
       <Column Name="NGAYGUI" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="NOIDUNG" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
       <Column Name="TRANGTHAI" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_HOTRO_UPDATE" Method="SP_HOTRO_UPDATE">
+    <Parameter Name="MAYC_MAHOA" Parameter="mAYC_MAHOA" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="TRANGTHAIMOI" Parameter="tRANGTHAIMOI" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_TOP10_BANCHAY" Method="SP_TOP10_BANCHAY">
+    <ElementType Name="SP_TOP10_BANCHAYResult">
+      <Column Name="TENSP" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TONGSLBAN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TONGDOANHTHU" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.FN_TINHLOINHUAN" Method="FN_TINHLOINHUAN" IsComposable="true">
+    <Parameter Name="MASP" Parameter="mASP" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="dbo.FN_TINHTONGTIENDONHANG" Method="FN_TINHTONGTIENDONHANG" IsComposable="true">
+    <Parameter Name="MADH" Parameter="mADH" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="dbo.SP_TOP10_MOINHAT" Method="SP_TOP10_MOINHAT">
+    <ElementType Name="SP_TOP10_MOINHATResult">
+      <Column Name="TENSP" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TONGSLBAN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TONGDOANHTHU" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

@@ -24,18 +24,17 @@ namespace Nhom04_CongNghePhanMem.Controllers
         public PartialViewResult HotProduct()
         {
             var hotProducts = data.SP_TOP10_BANCHAY().Take(4).ToList(); // gọi stored procedure SP_TOP10_BANCHAY
-            return PartialView( hotProducts);        // truyền sang partial view
+            return PartialView(hotProducts);        // truyền sang partial view
         }
 
         // Sản phẩm mới
         public PartialViewResult NewProduct()
         {
-            var newProducts = data.SANPHAMs
-                                 .OrderByDescending(sp => sp.MASP) // lấy sản phẩm mới nhất theo ID
-                                 .Take(4)                          // chỉ lấy 5 cái
-                                 .ToList();
-            return PartialView( newProducts);
+            var newProducts = data.SP_TOP10_MOINHAT().Take(4).ToList(); // gọi stored procedure SP_TOP10_MOINHAT
+            return PartialView(newProducts);        // truyền sang partial view
         }
+
+
 
 
 

@@ -153,107 +153,54 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\font\bootstrap-icons.css" />
     <Content Include="Content\font\bootstrap-icons.min.css" />
-    <Content Include="Content\Images\1.jpg" />
-    <Content Include="Content\Images\2.jpg" />
+    <Content Include="Content\Images\1Banner.jpeg" />
+    <Content Include="Content\Images\2nu.jpg" />
+    <Content Include="Content\Images\3nam.jpg" />
     <Content Include="Content\Images\4.jpg" />
-    <Content Include="Content\Images\5.jpg" />
-    <Content Include="Content\Images\b1.png" />
-    <Content Include="Content\Images\b2.png" />
-    <Content Include="Content\Images\banner.jpg" />
-    <Content Include="Content\Images\banner1.jpg" />
-    <Content Include="Content\Images\banner2.jpg" />
-    <Content Include="Content\Images\banner3.jpg" />
-    <Content Include="Content\Images\banner4.jpg" />
-    <Content Include="Content\Images\bb.jpeg" />
-    <Content Include="Content\Images\bv1.jpg" />
-    <Content Include="Content\Images\cp.jpg" />
-    <Content Include="Content\Images\dk.jpg" />
-    <Content Include="Content\Images\giay\g1.jpg" />
-    <Content Include="Content\Images\giay\g10.jpg" />
-    <Content Include="Content\Images\giay\g2.jpg" />
-    <Content Include="Content\Images\giay\g3.jpg" />
-    <Content Include="Content\Images\giay\g4.jpg" />
-    <Content Include="Content\Images\giay\g5.jpg" />
-    <Content Include="Content\Images\giay\g6.jpg" />
-    <Content Include="Content\Images\giay\g7.jpg" />
-    <Content Include="Content\Images\giay\g8.jpg" />
-    <Content Include="Content\Images\giay\g9.jpg" />
+    <Content Include="Content\Images\4couple.jpg" />
+    <Content Include="Content\Images\5dangki.jpg" />
+    <Content Include="Content\Images\6login.jpg" />
+    <Content Include="Content\Images\anh1.jpg" />
+    <Content Include="Content\Images\anh10.jpg" />
+    <Content Include="Content\Images\anh11.jpg" />
+    <Content Include="Content\Images\anh12.jpg" />
+    <Content Include="Content\Images\anh13.jpg" />
+    <Content Include="Content\Images\anh14.jpg" />
+    <Content Include="Content\Images\anh15.jpg" />
+    <Content Include="Content\Images\anh16.jpg" />
+    <Content Include="Content\Images\anh17.jpg" />
+    <Content Include="Content\Images\anh18.jpg" />
+    <Content Include="Content\Images\anh19.jpg" />
+    <Content Include="Content\Images\anh2.jpg" />
+    <Content Include="Content\Images\anh20.jpg" />
+    <Content Include="Content\Images\anh21.jpg" />
+    <Content Include="Content\Images\anh22.jpg" />
+    <Content Include="Content\Images\anh23.jpg" />
+    <Content Include="Content\Images\anh24.jpg" />
+    <Content Include="Content\Images\anh25.jpg" />
+    <Content Include="Content\Images\anh26.jpg" />
+    <Content Include="Content\Images\anh27.jpg" />
+    <Content Include="Content\Images\anh28.jpg" />
+    <Content Include="Content\Images\anh29.jpg" />
+    <Content Include="Content\Images\anh3.jpg" />
+    <Content Include="Content\Images\anh30.jpg" />
+    <Content Include="Content\Images\anh31.jpg" />
+    <Content Include="Content\Images\anh32.jpg" />
+    <Content Include="Content\Images\anh33.jpg" />
+    <Content Include="Content\Images\anh34.jpg" />
+    <Content Include="Content\Images\anh35.jpg" />
+    <Content Include="Content\Images\anh36.jpg" />
+    <Content Include="Content\Images\anh38.jpg" />
+    <Content Include="Content\Images\anh39.jpg" />
+    <Content Include="Content\Images\anh4.jpg" />
+    <Content Include="Content\Images\anh40.jpg" />
+    <Content Include="Content\Images\anh5.jpg" />
+    <Content Include="Content\Images\anh6.jpg" />
+    <Content Include="Content\Images\anh7.jpg" />
+    <Content Include="Content\Images\anh8.jpg" />
+    <Content Include="Content\Images\anh9.jpg" />
     <Content Include="Content\Images\iconloaisp.jpg" />
-    <Content Include="Content\Images\j1.jpg" />
-    <Content Include="Content\Images\j2.jpg" />
-    <Content Include="Content\Images\j3.jpg" />
-    <Content Include="Content\Images\jeans1.jpg" />
-    <Content Include="Content\Images\login.jpg" />
-    <Content Include="Content\Images\login1.jpg" />
-    <Content Include="Content\Images\nam.jpg" />
-    <Content Include="Content\Images\nu.jpg" />
-    <Content Include="Content\Images\phukien\pk10.jpg" />
-    <Content Include="Content\Images\phukien\pk2.jpg" />
-    <Content Include="Content\Images\phukien\pk3.jpg" />
-    <Content Include="Content\Images\phukien\pk4.jpg" />
-    <Content Include="Content\Images\phukien\pk5.jpg" />
-    <Content Include="Content\Images\phukien\pk6.jpg" />
-    <Content Include="Content\Images\phukien\pk7.jpg" />
-    <Content Include="Content\Images\phukien\pk8.jpg" />
-    <Content Include="Content\Images\phukien\pk9.jpg" />
-    <Content Include="Content\Images\quanjeans.jpg" />
-    <Content Include="Content\Images\set1.jpg" />
-    <Content Include="Content\Images\setdo\set1.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Images\setdo\set10.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Images\setdo\set11.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Images\setdo\set12.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Images\setdo\set13.jpg" />
-    <Content Include="Content\Images\setdo\set14.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Images\setdo\set17.jpg" />
-    <Content Include="Content\Images\setdo\set18.jpg" />
-    <Content Include="Content\Images\setdo\set2.jpg" />
-    <Content Include="Content\Images\setdo\set20.jpg" />
-    <Content Include="Content\Images\setdo\set3.jpg" />
-    <Content Include="Content\Images\setdo\set4.jpg" />
-    <Content Include="Content\Images\setdo\set5.jpg" />
-    <Content Include="Content\Images\setdo\set6.jpg" />
-    <Content Include="Content\Images\setdo\set8.jpg" />
-    <Content Include="Content\Images\setdo\set9.jpg" />
-    <Content Include="Content\Images\somi.jpg" />
-    <Content Include="Content\Images\t1.jpg" />
-    <Content Include="Content\Images\t2.jpg" />
-    <Content Include="Content\Images\tui\tui10.jpg" />
-    <Content Include="Content\Images\tui\tui3.jpg" />
-    <Content Include="Content\Images\tui\tui4.jpg" />
-    <Content Include="Content\Images\tui\tui5.jpg" />
-    <Content Include="Content\Images\tui\tui6.jpg" />
-    <Content Include="Content\Images\tui\tui7.jpg" />
-    <Content Include="Content\Images\tui\tui8.jpg" />
-    <Content Include="Content\Images\tui\tui9.jpg" />
-    <Content Include="Content\Images\vay.jpg" />
-    <Content Include="Content\Images\vay\vay10.jpg" />
-    <Content Include="Content\Images\vay\vay11.jpg" />
-    <Content Include="Content\Images\vay\vay12.jpg" />
-    <Content Include="Content\Images\vay\vay14.jpg" />
-    <Content Include="Content\Images\vay\vay15.jpg" />
-    <Content Include="Content\Images\vay\vay16.jpg" />
-    <Content Include="Content\Images\vay\vay17.jpg" />
-    <Content Include="Content\Images\vay\vay18.jpg" />
-    <Content Include="Content\Images\vay\vay19.jpg" />
-    <Content Include="Content\Images\vay\vay2.jpg" />
-    <Content Include="Content\Images\vay\vay20.jpg" />
-    <Content Include="Content\Images\vay\vay3.jpg" />
-    <Content Include="Content\Images\vay\vay4.jpg" />
-    <Content Include="Content\Images\vay\vay5.jpg" />
-    <Content Include="Content\Images\vay\vay6.jpg" />
-    <Content Include="Content\Images\vay\vay7.jpg" />
-    <Content Include="Content\Images\vay\vay8.jpg" />
-    <Content Include="Content\Images\vay\vay9.jpg" />
+    <Content Include="Content\Images\top1.jpg" />
     <Content Include="Content\JS\bootstrap.bundle.min.js" />
     <Content Include="Content\JS\fontawesome.min.js" />
     <Content Include="Content\JS\JavaScript.js" />
@@ -276,9 +223,6 @@
       <LastGenOutput>QuanLiCuaHang.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Content\Images\phukien\phukien1.webp" />
-    <Content Include="Content\Images\tui\tui1.webp" />
-    <Content Include="Content\Images\tui\tui2.webp" />
     <None Include="Models\QuanLiCuaHang.dbml.layout">
       <DependentUpon>QuanLiCuaHang.dbml</DependentUpon>
     </None>

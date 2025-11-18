@@ -5,11 +5,8 @@
     {
         <div class="col-lg-3 col-md-6 col-sm-12">
             <div class="card h-100 shadow-sm border-0">
-                <img src="@Url.Content("~/Content/Images/setdo/" + sp.HINHANH)"
-                     class="card-img-top"
-                     alt="@sp.TENSP"
-                     style="height:250px; object-fit:cover;" />
-
+             
+                <img src="~/Content/Images/@sp.HINHANH" class="card-img-top" alt="@sp.TENSP" style="height:250px; object-fit:cover;" />
                 <div class="card-body text-center">
                     <h5 class="card-title">@sp.TENSP</h5>
                     <p class="card-text text-danger fw-bold">@sp.GIABAN.ToString("C0")</p>

@@ -7,12 +7,19 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="~/Content/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <script src="Content/JS/bootstrap.bundle.min.js"></script>
 
     <style>
+        .top {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
         .top-header {
             background: #7a0d0d;
             padding: 15px 0;
             color: #fff;
+            
         }
 
         .search-box {
@@ -37,10 +44,81 @@
             right: -10px;
             font-size: 12px;
         }
+        /* ===== NEW NAVBAR STYLE (MERGED) ===== */
+        .navbar {
+           
+            border-bottom: 2px solid #f9cbd8;
+            box-shadow: 0 2px 8px rgba(233, 30, 99, 0.1);
+            
+            transition: all 0.3s ease;
+        }
+
+            .navbar:hover {
+                background: linear-gradient(90deg, #ffe4ec 0%, #fff0f5 100%);
+            }
+
+        /* Logo trong thanh navbar */
+        .navbar-brand h2 {
+            color: #d61b5e;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease;
+        }
+
+            .navbar-brand h2:hover {
+                transform: scale(1.05);
+                color: #a50d3a;
+            }
+
+        /* === MENU ITEMS (APPLY EFFECT) === */
+        .navbar-nav .nav-link {
+            color: #7f1d1d !important;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+            transition: color 0.3s ease, transform 0.2s;
+        }
+
+            /* Hover màu + nhích lên */
+            .navbar-nav .nav-link:hover {
+                color: #d61b5e !important;
+                transform: translateY(-1px);
+            }
+
+            /* Underline effect */
+            .navbar-nav .nav-link::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -2px;
+                width: 0%;
+                height: 2px;
+                background: #d61b5e;
+                transition: width 0.3s ease;
+            }
+
+            .navbar-nav .nav-link:hover::after {
+                width: 100%;
+            }
+
+        /* Dropdown menu (mượt hơn) */
+        .dropdown-menu {
+            border-radius: 10px;
+            border: 1px solid #f3b6c8;
+            box-shadow: 0 5px 15px rgba(233,30,99,0.15);
+        }
+
+        .dropdown-item:hover {
+            background: #ffe4ec;
+            color: #d61b5e !important;
+        }
 
 
         .hero-section {
-            background-image: url('../../content/images/bb.jpeg');
+            background-image: url('../../content/images/1banner.jpeg');
             background-position: center top;
             background-repeat: no-repeat;
             background-size: 100% auto; /* full chiều ngang, không bị crop */
@@ -65,80 +143,83 @@
 <body>
 
     <!-- 🔴 TOP HEADER -->
-    <div class="top-header">
-        <div class="container d-flex align-items-center justify-content-between">
+    <header class="top">
+        <div class="top-header">
+            <div class="container d-flex align-items-center justify-content-between">
 
-            <!-- Logo -->
-            <div class="d-flex align-items-center">
-                <img src="https://cdn-icons-png.flaticon.com/512/720/720934.png"
-                     width="55" class="me-2">
-                <h4 class="m-0">NUPAKACHI</h4>
-            </div>
+                <!-- Logo -->
+                <div class="d-flex align-items-center">
+                    <img src="https://cdn-icons-png.flaticon.com/512/720/720934.png"
+                         width="55" class="me-2">
+                    <h4 class="m-0">NUPAKACHI</h4>
+                </div>
 
-            <!-- Search -->
-            <div class="input-group search-box w-50">
-                <span class="input-group-text bg-white border-0">☰</span>
-                <input type="text" class="form-control border-0" placeholder="Nhập vào sản phẩm cần tìm">
-                <span class="input-group-text bg-white border-0">🔍</span>
-            </div>
+                <!-- Search -->
+                <div class="input-group search-box w-50">
+                    <span class="input-group-text bg-white border-0">☰</span>
+                    <input type="text" class="form-control border-0" placeholder="Nhập vào sản phẩm cần tìm">
+                    <span class="input-group-text bg-white border-0">🔍</span>
+                </div>
 
-            <!-- Buttons + Icons -->
-            <div class="d-flex align-items-center gap-3">
+                <!-- Buttons + Icons -->
+                <div class="d-flex align-items-center gap-3">
 
-                <button class="btn btn-light">Sign in</button>
-                <button class="btn btn-dark">Register</button>
+                    <button class="btn btn-light">Sign in</button>
+                    <button class="btn btn-dark">Register</button>
 
-                <!-- icons -->
-                <span class="icon-btn">♡</span>
+                    <!-- icons -->
+                    <span class="icon-btn">♡</span>
 
-                <div class="position-relative icon-btn">
-                    🛍
-                    <span class="badge bg-danger cart-badge">0</span>
+                    <div class="position-relative icon-btn">
+                        🛍
+                        <span class="badge bg-danger cart-badge">0</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-        <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
 
 
-            <!-- Button responsive -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <!-- Button responsive -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <!-- Menu items -->
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Trang chủ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sản phẩm</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Giới thiệu</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="boSuuTapDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            Bộ sưu tập ❤️
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="boSuuTapDropdown">
-                            <li><a class="dropdown-item" href="#">Thời trang nữ</a></li>
-                            <li><a class="dropdown-item" href="#">Thời trang nam</a></li>
-                            <li><a class="dropdown-item" href="#">trang phục couple</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Liên hệ</a>
-                    </li>
-                </ul>
+                <!-- Menu items -->
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sản phẩm</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Giới thiệu</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="boSuuTapDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Bộ sưu tập ❤️
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="boSuuTapDropdown">
+                                <li><a class="dropdown-item" href="#">Thời trang nữ</a></li>
+                                <li><a class="dropdown-item" href="#">Thời trang nam</a></li>
+                                <li><a class="dropdown-item" href="#">trang phục couple</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Liên hệ</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
+   
 
  
 
@@ -194,6 +275,6 @@
         </div>
     </footer>
 
-    <script src="Content/JS/bootstrap.bundle.min.js"></script>
+   
 </body>
 </html>
