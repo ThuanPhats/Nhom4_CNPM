@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/Content/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+    <style>
+        .top-header {
+            background: #7a0d0d;
+            padding: 15px 0;
+            color: #fff;
+        }
+
+        .search-box {
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .nav-menu a {
+            color: #333 !important;
+            margin-right: 25px;
+            font-size: 15px;
+        }
+
+        .icon-btn {
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            font-size: 12px;
+        }
+
+
+        .hero-section {
+            background-image: url('../../content/images/bb.jpeg');
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-size: 100% auto; /* full chiều ngang, không bị crop */
+            background-color: #fff7f9;
+            width: 100%;
+            height: 90vh; /* có thể điều chỉnh 80-100vh tùy ảnh */
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🔴 TOP HEADER -->
+    <div class="top-header">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <!-- Logo -->
+            <div class="d-flex align-items-center">
+                <img src="https://cdn-icons-png.flaticon.com/512/720/720934.png"
+                     width="55" class="me-2">
+                <h4 class="m-0">NUPAKACHI</h4>
+            </div>
+
+            <!-- Search -->
+            <div class="input-group search-box w-50">
+                <span class="input-group-text bg-white border-0">☰</span>
+                <input type="text" class="form-control border-0" placeholder="Nhập vào sản phẩm cần tìm">
+                <span class="input-group-text bg-white border-0">🔍</span>
+            </div>
+
+            <!-- Buttons + Icons -->
+            <div class="d-flex align-items-center gap-3">
+
+                <button class="btn btn-light">Sign in</button>
+                <button class="btn btn-dark">Register</button>
+
+                <!-- icons -->
+                <span class="icon-btn">♡</span>
+
+                <div class="position-relative icon-btn">
+                    🛍
+                    <span class="badge bg-danger cart-badge">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+
+
+            <!-- Button responsive -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menu items -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sản phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="boSuuTapDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Bộ sưu tập ❤️
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="boSuuTapDropdown">
+                            <li><a class="dropdown-item" href="#">Thời trang nữ</a></li>
+                            <li><a class="dropdown-item" href="#">Thời trang nam</a></li>
+                            <li><a class="dropdown-item" href="#">trang phục couple</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Liên hệ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+ 
+
+    <div>
+        @RenderBody()
+    </div>
+   
+
+
+    <footer class="mt-5" style="background:#7a0d0d; color:white; padding:50px 0;">
+        <div class="container">
+
+            <div class="row">
+
+                <!-- SOCIAL + LOGO -->
+                <div class="col-md-4 mb-4">
+
+                    <!-- Social Icons -->
+                    <div class="d-flex mb-4 fs-4 gap-3">
+                        <span>X</span>
+                        <span>📸</span>
+                        <span>▶️</span>
+                        <span>in</span>
+                    </div>
+
+                    <!-- Logo -->
+                    <img src="https://cdn-icons-png.flaticon.com/512/720/720934.png"
+                         width="90" alt="logo">
+                </div>
+
+                <!-- SHOP -->
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-bold">SHOP</h6>
+                    <p class="m-0 mt-3">Hàng mới về</p>
+                    <p class="m-0 mt-2">Hàng bán chạy</p>
+                </div>
+
+                <!-- HELP -->
+                <div class="col-md-3 mb-4">
+                    <h6 class="fw-bold">HELP</h6>
+                    <p class="m-0 mt-3">Liên hệ với chúng tôi</p>
+                    <p class="m-0 mt-2">Liên hệ vận chuyển</p>
+                </div>
+
+                <!-- ABOUT -->
+                <div class="col-md-3 mb-4">
+                    <h6 class="fw-bold">ABOUT</h6>
+                    <p class="m-0 mt-3">Giới thiệu về chúng tôi</p>
+                    <p class="m-0 mt-2">Truyền thông</p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="Content/JS/bootstrap.bundle.min.js"></script>
+</body>
+</html>

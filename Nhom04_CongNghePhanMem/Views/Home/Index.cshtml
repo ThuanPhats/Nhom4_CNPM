@@ -1,0 +1,157 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+
+@using Nhom04_CongNghePhanMem.Models;
+@model List<SANPHAM>
+
+<!-- Banner -->
+
+<section class="hero-section position-relative text-white text-start">
+    <div class="hero-overlay d-flex align-items-center">
+        <div class="container py-5">
+            <div class="col-lg-6 col-md-8">
+                <h2 class="display-4 fw-bold mb-3">
+                    Bộ sưu tập mới nhất 2025
+                </h2>
+
+                <p class="lead mb-4">
+                    Khám phá phong cách thời trang của bạn
+                </p>
+                <div class="d-flex gap-3">
+                    <a href="#" class="btn btn-primary btn-lg px-4 py-2 btn-hero" style="background: #7a0d0d">
+                        Mua Ngay ✧
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- ====================== DANH MỤC SẢN PHẨM ====================== -->
+<section class="py-5 text-center">
+    <div class="container">
+        <h3 class="fw-bold mb-3">Danh Mục Sản Phẩm</h3>
+        <p class="mb-4">Chọn phong cách phù hợp với bạn</p>
+        <div class="row g-4 justify-content-center">
+            @foreach (var dm in Model
+                    .Where(v => v.LOAISANPHAM != null)
+                    .Select(v => v.LOAISANPHAM)
+                    .Distinct()
+                    .Take(5))
+            {
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <a href="#">
+                        <div class="card p-4 border-0 shadow-sm text-center">
+                            <img src="@Url.Content("~/Content/Images/iconloaisp.jpg")" class="mb-3" style="height:80px; width:80px;" />
+                            <p class="fw-bold fs-6 mb-0">💗 @dm.TENLOAI</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- ====================== ƯU ĐIỂM ====================== -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-6 col-lg-3">
+                <i class="bi bi-truck fs-1 text-danger"></i>
+                <p class="fw-bold mt-2 mb-0">Miễn phí vận chuyển</p>
+                <small class="text-secondary">Áp dụng toàn quốc</small>
+            </div>
+            <div class="col-6 col-lg-3">
+                <i class="bi bi-arrow-counterclockwise fs-1 text-danger"></i>
+                <p class="fw-bold mt-2 mb-0">Hoàn trả miễn phí</p>
+                <small class="text-secondary">Nếu sản phẩm bị lỗi</small>
+            </div>
+            <div class="col-6 col-lg-3">
+                <i class="bi bi-headset fs-1 text-danger"></i>
+                <p class="fw-bold mt-2 mb-0">Hỗ trợ 24/7</p>
+                <small class="text-secondary">Giải đáp mọi thắc mắc</small>
+            </div>
+            <div class="col-6 col-lg-3">
+                <i class="bi bi-ticket-detailed-fill fs-1 text-danger"></i>
+                <p class="fw-bold mt-2 mb-0">Phiếu ưu đãi</p>
+                <small class="text-secondary">Nhiều khuyến mãi hấp dẫn</small>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====================== BỘ SƯU TẬP NỮ/NAM/COUPLE ====================== -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-3">
+            <!-- Cột trái: Nữ & Nam -->
+            <div class="col-lg-6 d-flex flex-column gap-3">
+                <!-- Nữ -->
+                <div class="card text-white position-relative overflow-hidden"
+                     style="height: 350px; background-image: url('@Url.Content("~/Content/Images/nu.jpg")'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                    <div class="card-img-overlay d-flex flex-column justify-content-center p-3" style="background: rgba(0,0,0,0.4);">
+                        <h3 class="fw-bold">NỮ: Vẻ Đẹp Thanh Lịch</h3>
+                        <p class="mb-0">Khám phá bộ sưu tập Ethereal</p>
+                        <a href="#women" class="stretched-link"></a>
+                    </div>
+                </div>
+
+                <!-- Nam -->
+                <div class="card text-white position-relative overflow-hidden"
+                     style="height: 350px; background-image: url('@Url.Content("~/Content/Images/nam.jpg")'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                    <div class="card-img-overlay d-flex flex-column justify-content-center p-3" style="background: rgba(0,0,0,0.4);">
+                        <h3 class="fw-bold">NAM: Phong Cách Smart Casual</h3>
+                        <p class="mb-0">Trang phục công sở và dạo phố</p>
+                        <a href="#men" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cột phải: Couple -->
+            <div class="col-lg-6">
+                <div class="card text-white position-relative overflow-hidden"
+                     style="height: 100%; min-height: 720px; background-image: url('@Url.Content("~/Content/Images/cp.jpg")'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                    <div class="card-img-overlay d-flex flex-column justify-content-center p-3" style="background: rgba(0,0,0,0.4);">
+                        <h3 class="fw-bold">COUPLE: Phong Cách Đồng Điệu</h3>
+                        <p class="mb-0">Mua sắm trang phục đôi mùa này</p>
+                        <a href="#couple" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====================== SẢN PHẨM NỔI BẬT ====================== -->
+<section class="py-5">
+    <div class="container">
+        <h3 class="text-center fw-bold mb-4">Sản Phẩm Nổi Bật</h3>
+        @Html.Partial("HotProduct")
+    </div>
+</section>
+
+<!-- ====================== SẢN PHẨM MỚI ====================== -->
+<section class="py-5">
+    <div class="container">
+        <h3 class="text-center fw-bold mb-4">Sản Phẩm Mới</h3>
+        @Html.Partial("NewProduct")
+    </div>
+</section>
+
+
+
+
+
+<img src="@Url.Content("~/Content/Images/vay/ao_thun_xanh.jpg")"
+     class="card-img-top"
+     alt="Test"
+     style="height:250px; object-fit:cover;" />
+
