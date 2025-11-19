@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "DatHangThanhCong";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="container py-5 d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="card shadow-lg text-center p-4" style="max-width: 500px; border-radius: 20px;">
+
+        <!-- Icon thành công -->
+        <div class="mb-3">
+            <i class="fa fa-check-circle text-success" style="font-size: 80px;"></i>
+        </div>
+
+        <!-- Tiêu đề -->
+        <h2 class="fw-bold mb-3">Đặt hàng thành công!</h2>
+
+        <!-- Thông báo -->
+        <p class="text-muted mb-4" style="font-size: 1.1rem;">
+            Cảm ơn bạn đã đặt hàng. Chúng tôi sẽ liên hệ bạn sớm nhất để xác nhận đơn hàng và tiến hành giao hàng.
+        </p>
+
+        <!-- Nút hành động -->
+        <div class="d-flex justify-content-center gap-2 flex-wrap">
+            <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-lg px-4">
+                Quay về trang chủ
+            </a>
+            <a href="@Url.Action("GioHang", "CartSanPham")" class="btn btn-outline-secondary btn-lg px-4">
+                Xem giỏ hàng
+            </a>
+        </div>
+
+    </div>
+</div>
+

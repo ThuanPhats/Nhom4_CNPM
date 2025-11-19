@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "BoSuuTap";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@model List<Nhom04_CongNghePhanMem.Models.SANPHAM>
+
+<div class="container my-5">
+    <div class="row g-4">
+        @foreach (var sp in Model)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card h-100 shadow-sm">
+                    <img src="@Url.Content("~/Content/Images/")@sp.HINHANH" class="card-img-top" style="height:200px; object-fit:cover;" />
+                    <div class="card-body text-center">
+                        <h6 class="card-title">@sp.TENSP</h6>
+                        <p class="fw-bold">@sp.GIABAN.ToString("N0") VND</p>
+                        <a href="@Url.Action("XemChiTiet","Home", new { id = sp.MASP })" class="btn btn-sm btn-outline-danger">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

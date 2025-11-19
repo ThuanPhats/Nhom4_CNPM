@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -7,7 +8,7 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="~/Content/font/bootstrap-icons.min.css" rel="stylesheet" />
-    <script src="Content/JS/bootstrap.bundle.min.js"></script>
+
 
     <style>
         .top {
@@ -15,11 +16,11 @@
             top: 0;
             z-index: 999;
         }
+
         .top-header {
             background: #7a0d0d;
             padding: 15px 0;
             color: #fff;
-            
         }
 
         .search-box {
@@ -46,10 +47,8 @@
         }
         /* ===== NEW NAVBAR STYLE (MERGED) ===== */
         .navbar {
-           
             border-bottom: 2px solid #f9cbd8;
             box-shadow: 0 2px 8px rgba(233, 30, 99, 0.1);
-            
             transition: all 0.3s ease;
         }
 
@@ -155,28 +154,67 @@
                 </div>
 
                 <!-- Search -->
-                <div class="input-group search-box w-50">
-                    <span class="input-group-text bg-white border-0">☰</span>
-                    <input type="text" class="form-control border-0" placeholder="Nhập vào sản phẩm cần tìm">
-                    <span class="input-group-text bg-white border-0">🔍</span>
+                <div class="mb-4">
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                    {
+                        <div class="input-group search-box" style="width:500px">
+                            <span class="input-group-text bg-white border-0">☰</span>
+                            <input type="text" name="search" value="@ViewBag.Search" class="form-control border-0" placeholder="Nhập vào sản phẩm cần tìm">
+                            <button class="btn btn-danger" type="submit">🔍</button>
+                        </div>
+                    }
                 </div>
 
                 <!-- Buttons + Icons -->
                 <div class="d-flex align-items-center gap-3">
 
-                    <button class="btn btn-light">Sign in</button>
-                    <button class="btn btn-dark">Register</button>
+                    @if (Session["UserName"] == null)
+                    {
+                        <!-- Chưa đăng nhập -->
+                        <a class="btn btn-light" href="@Url.Action("DangNhap", "Account")">
+                            Sign in
+                        </a>
+                        <a class="btn btn-dark" href="@Url.Action("DangKy", "Account")">
+                            Register
+                        </a>
 
-                    <!-- icons -->
-                    <span class="icon-btn">♡</span>
+                        <!-- Wishlist icon -->
+                        <span class="icon-btn">♡</span>
 
-                    <div class="position-relative icon-btn">
-                        🛍
+                        <!-- Cart icon -->
+                        <div class="position-relative icon-btn">
+                            <a href="/Home/GioHang"> 🛍</a>
+                            <span class="badge bg-danger cart-badge">0</span>
+                        </div>
+                    }
+                    else
+                    {
+                        <!-- Đã đăng nhập -->
+                        <span class="fw-semibold text-danger me-2">Xin chào, @Session["UserName"]</span>
+
+                        <a class="btn btn-outline-danger" href="@Url.Action("DangXuat", "Account")">
+                            Đăng Xuất
+                        </a>
+
+                        <!-- Wishlist icon -->
+                        <span class="icon-btn">♡</span>
+
+                        <!-- Cart icon -->
+                    <div class="position-relative d-inline-block">
+                        <a href="@Url.Action("GioHang", "Home")" class="text-white fs-4">
+                            <i class="fa fa-shopping-cart"></i>
+                        </a>
+                        <a href="/Home/GioHang"> 🛍</a>
                         <span class="badge bg-danger cart-badge">0</span>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            @(Session["SoLuongGioHang"] ?? 0)
+                        </span>
                     </div>
-                </div>
-            </div>
-        </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
 
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
             <div class="container">
@@ -192,13 +230,13 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Trang chủ</a>
+                            <a class="nav-link active" href="/Home/Index">Trang chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sản phẩm</a>
+                            <a class="nav-link" href="/Home/SanPham">Sản phẩm</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Giới thiệu</a>
+                            <a class="nav-link" href="/Home/GioiThieu">Giới thiệu</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="boSuuTapDropdown" role="button"
@@ -206,27 +244,27 @@
                                 Bộ sưu tập ❤️
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="boSuuTapDropdown">
-                                <li><a class="dropdown-item" href="#">Thời trang nữ</a></li>
-                                <li><a class="dropdown-item" href="#">Thời trang nam</a></li>
-                                <li><a class="dropdown-item" href="#">trang phục couple</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("BoSuuTap", "Home", new { phanLoai = "Nữ" })">Thời trang nữ</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("BoSuuTap", "Home", new { phanLoai = "Nam" })">Thời trang nam</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("BoSuuTap", "Home", new { phanLoai = "Couple" })">Trang phục couple</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Liên hệ</a>
+                            <a class="nav-link" href="/Home/HoTroKhachHang">Liên hệ hỗ trợ</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-   
 
- 
+
+
 
     <div>
         @RenderBody()
     </div>
-   
+
 
 
     <footer class="mt-5" style="background:#7a0d0d; color:white; padding:50px 0;">
@@ -274,7 +312,7 @@
             </div>
         </div>
     </footer>
+    <script src="~/Content/JS/bootstrap.bundle.min.js"></script>
 
-   
 </body>
 </html>

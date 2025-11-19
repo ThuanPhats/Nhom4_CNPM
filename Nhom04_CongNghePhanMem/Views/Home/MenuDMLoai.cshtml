@@ -1,0 +1,20 @@
+﻿@using Nhom04_CongNghePhanMem.Models
+@model List<LOAISANPHAM>
+
+<ul class="nav flex-column category-menu">
+    <li class="nav-item"><p>DANH MỤC SẢN PHẨM:</p></li>
+    <li class="nav-item">
+        <a class="nav-link @(ViewBag.SelectedCategory == null ? "active" : "")"
+           href="@Url.Action(" SanPham", "Home")">Tất cả danh mục</a>
+    </li>
+
+    @foreach (LOAISANPHAM dm in Model)
+    {
+        <li class="nav-item">
+            <a class="nav-link @(ViewBag.SelectedCategory == dm.MALOAI ? "active" : "") "
+               href="@Url.Action(" SanPham", "Home", new { categoryId = dm.MALOAI })">
+                @dm.TENLOAI
+            </a>
+        </li>
+    }
+</ul>

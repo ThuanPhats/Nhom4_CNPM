@@ -23,7 +23,7 @@
                     Khám phá phong cách thời trang của bạn
                 </p>
                 <div class="d-flex gap-3">
-                    <a href="#" class="btn btn-primary btn-lg px-4 py-2 btn-hero" style="background: #7a0d0d">
+                    <a href="/Home/SanPham" class="btn btn-primary btn-lg px-4 py-2 btn-hero" style="background: #7a0d0d">
                         Mua Ngay ✧
                     </a>
                 </div>
@@ -48,9 +48,9 @@
                     .Take(5))
             {
                 <div class="col-lg-2 col-md-3 col-sm-4">
-                    <a href="#">
+                    <a href="#" style="text-decoration: none;">
                         <div class="card p-4 border-0 shadow-sm text-center">
-                            <img src="~/Content/Images/iconloaisp.jpg" class="mb-3" style="height:80px; width:80px;" />                        
+                            <img src="~/Content/Images/iconloaisp.jpg" class="mb-3" style="height:80px; width:80px;text-align:center" />                        
                             <p class="fw-bold fs-6 mb-0">💗 @dm.TENLOAI</p>
                         </div>
                     </a>
@@ -134,7 +134,8 @@
 <section class="py-5">
     <div class="container">
         <h3 class="text-center fw-bold mb-4">Sản Phẩm Nổi Bật</h3>
-        @Html.Partial("HotProduct")
+        @Html.Action("HotProduct", "Home")
+    
     </div>
 </section>
 
@@ -142,7 +143,8 @@
 <section class="py-5">
     <div class="container">
         <h3 class="text-center fw-bold mb-4">Sản Phẩm Mới</h3>
-        @Html.Partial("NewProduct")
+        @Html.Action("NewProduct", "Home")
+   
     </div>
 </section>
 

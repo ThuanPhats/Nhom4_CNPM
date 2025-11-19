@@ -1,0 +1,146 @@
+﻿@using Nhom04_CongNghePhanMem.Models
+@model SANPHAM
+
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    var dsCD = ViewBag.dsCD as List<SANPHAM>;
+}
+
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4" style="color:#8B1A3C; font-weight:700;">Chi tiết sản phẩm</h2>
+
+    <div class="row p-4 rounded shadow-sm" style="background:#ffe9e0">
+
+        <!-- Ảnh sản phẩm -->
+        <div class="col-md-5 text-center">
+            <img src="~/Content/Images/@Model.HINHANH" class="img-fluid rounded shadow" style="max-height:400px; object-fit:cover;" />
+        </div>
+
+        <!-- Thông tin sản phẩm -->
+        <div class="col-md-7 mt-3 mt-md-0">
+
+            <h3 class="fw-bold">@Model.TENSP</h3>
+
+            <p class="mb-2">
+                <strong>Đánh giá:</strong>
+                @{
+                    int sao = (int)(Model.DIEMTB ?? 5);
+                    for (int i = 0; i < sao; i++)
+                    {
+                        @:<span style="color:gold; font-size:1.2rem;">★</span>
+                    }
+                }
+            </p>
+
+            <p class="mb-2"><strong>Giá:</strong> @String.Format("{0:N0} VNĐ", Model.GIABAN)</p>
+            <p class="mb-3"><strong>Mô tả:</strong> @Model.MOTA</p>
+
+            <p><strong>Số lượng còn:</strong> @Model.SOLUONGTON</p>
+            <hr />
+
+            <!-- Form Thêm vào giỏ hàng -->
+            <form action="@Url.Action("ThemVaoGioHang", "Home")" method="post">
+
+                <input type="hidden" name="id" value="@Model.MASP" />
+                <input type="hidden" name="size" id="selectedSize" />
+                <input type="hidden" name="mau" id="selectedColor" />
+
+                <!-- Số lượng mua -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Số lượng mua:</label>
+                    <input type="number" name="soLuong" id="soluong" value="1" min="1" max="@Model.SOLUONGTON" class="form-control w-25" />
+                </div>
+
+                <!-- Size -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Size:</label><br />
+                    @{
+                        string[] sizes = Model.KICHTHUOC?.Split(',') ?? new string[] { };
+                        foreach (var s in sizes)
+                        {
+                            <button type="button" class="btn btn-outline-primary btn-sm me-1 mb-1 size-btn">@s</button>
+                        }
+                    }
+                    <input type="hidden" id="selectedSize" name="size" value="@sizes.FirstOrDefault()" />
+                </div>
+
+                <!-- Màu sắc -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Màu sắc:</label>
+                    <div class="d-flex flex-wrap gap-2 mt-2">
+                        @if (!string.IsNullOrEmpty(Model.MAUSAC))
+                        {
+                            string[] mau = Model.MAUSAC.Split(',');
+                            for (int i = 0; i < mau.Length; i++)
+                            {
+                                var color = mau[i].Trim();
+                                var radioId = "colorRadio" + i;
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="selectedColorRadio" id="@radioId" value="@color">
+                                    @color
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-danger btn-lg mt-2">Thêm vào giỏ hàng</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sản phẩm liên quan -->
+    <h3 class="mt-5 mb-3" style="color:#8B1A3C; font-weight:700;">Sản phẩm liên quan</h3>
+    <div class="row">
+        @foreach (var item in dsCD)
+        {
+            <div class="col-6 col-md-3 mb-4">
+                <div class="card shadow-sm h-100">
+                    <img src="~/Content/Images/@item.HINHANH" class="card-img-top" style="height:200px; object-fit:cover;" />
+                    <div class="card-body text-center d-flex flex-column justify-content-between">
+                        <h6 class="card-title">@item.TENSP</h6>
+                        <p class="text-danger fw-bold">@String.Format("{0:N0} VNĐ", item.GIABAN)</p>
+                        <a href="@Url.Action("XemChiTiet", "Home", new { id = item.MASP })" class="btn btn-outline-danger btn-sm mt-2">
+                            Xem chi tiết
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    
+    // Khi click button size
+    document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                // Xóa active của các button khác
+                document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+                // Thêm active cho button được chọn
+                this.classList.add('active');
+                // Lưu giá trị vào hidden input
+                document.getElementById('selectedSize').value = this.textContent.trim();
+            });
+    });
+
+
+
+
+    // Chọn màu
+    document.querySelectorAll('input[name="selectedColorRadio"]').forEach(radio => {
+        radio.addEventListener('change', function () {
+            document.getElementById('selectedColor').value = this.value;
+        });
+    });
+</script>
+
+<style>
+    .size-btn.active {
+        background-color: #0d6efd;
+        color: #fff;
+        border-color: #0d6efd;
+    }
+</style>

@@ -1,30 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\B\u00E0i h\u1ECDc - B\u00E0i t\u1EADp\\C\u00F4ng Ngh\u1EC7 Ph\u1EA7n M\u1EC1m\\\u0110\u1ED3 \u00E1n\\Nhom04_CongNghePhanMem (2)\\Nhom04_CongNghePhanMem\\",
+  "WorkspaceRootPath": "C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|D:\\B\u00E0i h\u1ECDc - B\u00E0i t\u1EADp\\C\u00F4ng Ngh\u1EC7 Ph\u1EA7n M\u1EC1m\\\u0110\u1ED3 \u00E1n\\Nhom04_CongNghePhanMem (2)\\Nhom04_CongNghePhanMem\\nhom04_congnghephanmem\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|solutionrelative:nhom04_congnghephanmem\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\nhom04_congnghephanmem\\models\\quanlicuahang.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|solutionrelative:nhom04_congnghephanmem\\models\\quanlicuahang.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|d:\\b\u00E0i h\u1ECDc - b\u00E0i t\u1EADp\\c\u00F4ng ngh\u1EC7 ph\u1EA7n m\u1EC1m\\\u0111\u1ED3 \u00E1n\\nhom04_congnghephanmem (2)\\nhom04_congnghephanmem\\nhom04_congnghephanmem\\views\\home\\newproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|solutionrelative:nhom04_congnghephanmem\\views\\home\\newproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|D:\\B\u00E0i h\u1ECDc - B\u00E0i t\u1EADp\\C\u00F4ng Ngh\u1EC7 Ph\u1EA7n M\u1EC1m\\\u0110\u1ED3 \u00E1n\\Nhom04_CongNghePhanMem (2)\\Nhom04_CongNghePhanMem\\nhom04_congnghephanmem\\views\\home\\hotproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|solutionrelative:nhom04_congnghephanmem\\views\\home\\hotproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|D:\\B\u00E0i h\u1ECDc - B\u00E0i t\u1EADp\\C\u00F4ng Ngh\u1EC7 Ph\u1EA7n M\u1EC1m\\\u0110\u1ED3 \u00E1n\\Nhom04_CongNghePhanMem (2)\\Nhom04_CongNghePhanMem\\nhom04_congnghephanmem\\views\\shared\\_userlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|c:\\users\\asus\\downloads\\nhom04_congnghephanmem\\nhom04_congnghephanmem\\views\\shared\\_userlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|solutionrelative:nhom04_congnghephanmem\\views\\shared\\_userlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|D:\\B\u00E0i h\u1ECDc - B\u00E0i t\u1EADp\\C\u00F4ng Ngh\u1EC7 Ph\u1EA7n M\u1EC1m\\\u0110\u1ED3 \u00E1n\\Nhom04_CongNghePhanMem (2)\\Nhom04_CongNghePhanMem\\nhom04_congnghephanmem\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|solutionrelative:nhom04_congnghephanmem\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\nhom04_congnghephanmem\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|solutionrelative:nhom04_congnghephanmem\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|D:\\B\u00E0i h\u1ECDc - B\u00E0i t\u1EADp\\C\u00F4ng Ngh\u1EC7 Ph\u1EA7n M\u1EC1m\\\u0110\u1ED3 \u00E1n\\Nhom04_CongNghePhanMem (2)\\Nhom04_CongNghePhanMem\\nhom04_congnghephanmem\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|solutionrelative:nhom04_congnghephanmem\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\nhom04_congnghephanmem\\views\\home\\donhang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|solutionrelative:nhom04_congnghephanmem\\views\\home\\donhang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\nhom04_congnghephanmem\\views\\home\\giohang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|solutionrelative:nhom04_congnghephanmem\\views\\home\\giohang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\nhom04_congnghephanmem\\views\\home\\xemchitiet.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|solutionrelative:nhom04_congnghephanmem\\views\\home\\xemchitiet.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\nhom04_congnghephanmem\\models\\giohangsanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|solutionrelative:nhom04_congnghephanmem\\models\\giohangsanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\nhom04_congnghephanmem\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FFE95E58-F28C-4365-946F-4EE9FC442354}|Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem.csproj|solutionrelative:nhom04_congnghephanmem\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,84 +42,110 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_UserLayout.cshtml",
-              "DocumentMoniker": "D:\\B\u00E0i h\u1ECDc - B\u00E0i t\u1EADp\\C\u00F4ng Ngh\u1EC7 Ph\u1EA7n M\u1EC1m\\\u0110\u1ED3 \u00E1n\\Nhom04_CongNghePhanMem (2)\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Views\\Shared\\_UserLayout.cshtml",
-              "RelativeDocumentMoniker": "Nhom04_CongNghePhanMem\\Views\\Shared\\_UserLayout.cshtml",
-              "ToolTip": "D:\\B\u00E0i h\u1ECDc - B\u00E0i t\u1EADp\\C\u00F4ng Ngh\u1EC7 Ph\u1EA7n M\u1EC1m\\\u0110\u1ED3 \u00E1n\\Nhom04_CongNghePhanMem (2)\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Views\\Shared\\_UserLayout.cshtml",
-              "RelativeToolTip": "Nhom04_CongNghePhanMem\\Views\\Shared\\_UserLayout.cshtml",
-              "ViewState": "AgIAALwAAAAAAAAAAAAQwNsAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-18T03:25:16.836Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "NewProduct.cshtml",
-              "DocumentMoniker": "D:\\B\u00E0i h\u1ECDc - B\u00E0i t\u1EADp\\C\u00F4ng Ngh\u1EC7 Ph\u1EA7n M\u1EC1m\\\u0110\u1ED3 \u00E1n\\Nhom04_CongNghePhanMem (2)\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Views\\Home\\NewProduct.cshtml",
-              "RelativeDocumentMoniker": "Nhom04_CongNghePhanMem\\Views\\Home\\NewProduct.cshtml",
-              "ToolTip": "D:\\B\u00E0i h\u1ECDc - B\u00E0i t\u1EADp\\C\u00F4ng Ngh\u1EC7 Ph\u1EA7n M\u1EC1m\\\u0110\u1ED3 \u00E1n\\Nhom04_CongNghePhanMem (2)\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Views\\Home\\NewProduct.cshtml",
-              "RelativeToolTip": "Nhom04_CongNghePhanMem\\Views\\Home\\NewProduct.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAlAAAAAAAAAA==",
+              "Title": "_UserLayout.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Views\\Shared\\_UserLayout.cshtml",
+              "RelativeDocumentMoniker": "Nhom04_CongNghePhanMem\\Views\\Shared\\_UserLayout.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Views\\Shared\\_UserLayout.cshtml",
+              "RelativeToolTip": "Nhom04_CongNghePhanMem\\Views\\Shared\\_UserLayout.cshtml",
+              "ViewState": "AgIAAMAAAAAAAAAAAAAAANIAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-18T08:27:12.501Z",
+              "WhenOpened": "2025-11-19T10:38:10.312Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "QuanLiCuaHang.designer.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Models\\QuanLiCuaHang.designer.cs",
+              "RelativeDocumentMoniker": "Nhom04_CongNghePhanMem\\Models\\QuanLiCuaHang.designer.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Models\\QuanLiCuaHang.designer.cs",
+              "RelativeToolTip": "Nhom04_CongNghePhanMem\\Models\\QuanLiCuaHang.designer.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAiwGUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T10:28:07.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GioHangSanPham.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Models\\GioHangSanPham.cs",
+              "RelativeDocumentMoniker": "Nhom04_CongNghePhanMem\\Models\\GioHangSanPham.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Models\\GioHangSanPham.cs",
+              "RelativeToolTip": "Nhom04_CongNghePhanMem\\Models\\GioHangSanPham.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAQwFMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T09:58:08.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "XemChiTiet.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Views\\Home\\XemChiTiet.cshtml",
+              "RelativeDocumentMoniker": "Nhom04_CongNghePhanMem\\Views\\Home\\XemChiTiet.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Views\\Home\\XemChiTiet.cshtml",
+              "RelativeToolTip": "Nhom04_CongNghePhanMem\\Views\\Home\\XemChiTiet.cshtml",
+              "ViewState": "AgIAABoAAAAAAAAAAAAYwCUAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-19T09:21:12.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DonHang.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Views\\Home\\DonHang.cshtml",
+              "RelativeDocumentMoniker": "Nhom04_CongNghePhanMem\\Views\\Home\\DonHang.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Views\\Home\\DonHang.cshtml",
+              "RelativeToolTip": "Nhom04_CongNghePhanMem\\Views\\Home\\DonHang.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-19T08:25:29.126Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GioHang.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Views\\Home\\GioHang.cshtml",
+              "RelativeDocumentMoniker": "Nhom04_CongNghePhanMem\\Views\\Home\\GioHang.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Views\\Home\\GioHang.cshtml",
+              "RelativeToolTip": "Nhom04_CongNghePhanMem\\Views\\Home\\GioHang.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-19T07:30:16.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\B\u00E0i h\u1ECDc - B\u00E0i t\u1EADp\\C\u00F4ng Ngh\u1EC7 Ph\u1EA7n M\u1EC1m\\\u0110\u1ED3 \u00E1n\\Nhom04_CongNghePhanMem (2)\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Controllers\\HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Nhom04_CongNghePhanMem\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\B\u00E0i h\u1ECDc - B\u00E0i t\u1EADp\\C\u00F4ng Ngh\u1EC7 Ph\u1EA7n M\u1EC1m\\\u0110\u1ED3 \u00E1n\\Nhom04_CongNghePhanMem (2)\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Controllers\\HomeController.cs*",
-              "RelativeToolTip": "Nhom04_CongNghePhanMem\\Controllers\\HomeController.cs*",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBIAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Nhom04_CongNghePhanMem\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAGEBAAAAAAAAAAAUwHUBAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-18T03:23:38.92Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HotProduct.cshtml",
-              "DocumentMoniker": "D:\\B\u00E0i h\u1ECDc - B\u00E0i t\u1EADp\\C\u00F4ng Ngh\u1EC7 Ph\u1EA7n M\u1EC1m\\\u0110\u1ED3 \u00E1n\\Nhom04_CongNghePhanMem (2)\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Views\\Home\\HotProduct.cshtml",
-              "RelativeDocumentMoniker": "Nhom04_CongNghePhanMem\\Views\\Home\\HotProduct.cshtml",
-              "ToolTip": "D:\\B\u00E0i h\u1ECDc - B\u00E0i t\u1EADp\\C\u00F4ng Ngh\u1EC7 Ph\u1EA7n M\u1EC1m\\\u0110\u1ED3 \u00E1n\\Nhom04_CongNghePhanMem (2)\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Views\\Home\\HotProduct.cshtml",
-              "RelativeToolTip": "Nhom04_CongNghePhanMem\\Views\\Home\\HotProduct.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAyAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Nhom04_CongNghePhanMem\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\Downloads\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Nhom04_CongNghePhanMem\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-18T08:25:15.105Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\B\u00E0i h\u1ECDc - B\u00E0i t\u1EADp\\C\u00F4ng Ngh\u1EC7 Ph\u1EA7n M\u1EC1m\\\u0110\u1ED3 \u00E1n\\Nhom04_CongNghePhanMem (2)\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Nhom04_CongNghePhanMem\\Controllers\\AccountController.cs",
-              "ToolTip": "D:\\B\u00E0i h\u1ECDc - B\u00E0i t\u1EADp\\C\u00F4ng Ngh\u1EC7 Ph\u1EA7n M\u1EC1m\\\u0110\u1ED3 \u00E1n\\Nhom04_CongNghePhanMem (2)\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Nhom04_CongNghePhanMem\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T03:23:37.091Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "D:\\B\u00E0i h\u1ECDc - B\u00E0i t\u1EADp\\C\u00F4ng Ngh\u1EC7 Ph\u1EA7n M\u1EC1m\\\u0110\u1ED3 \u00E1n\\Nhom04_CongNghePhanMem (2)\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "Nhom04_CongNghePhanMem\\Controllers\\AdminController.cs",
-              "ToolTip": "D:\\B\u00E0i h\u1ECDc - B\u00E0i t\u1EADp\\C\u00F4ng Ngh\u1EC7 Ph\u1EA7n M\u1EC1m\\\u0110\u1ED3 \u00E1n\\Nhom04_CongNghePhanMem (2)\\Nhom04_CongNghePhanMem\\Nhom04_CongNghePhanMem\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "Nhom04_CongNghePhanMem\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T03:23:08.273Z",
+              "WhenOpened": "2025-11-18T07:59:12.187Z",
               "EditorCaption": ""
             }
           ]

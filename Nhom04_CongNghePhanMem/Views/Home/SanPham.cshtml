@@ -1,0 +1,110 @@
+﻿@using Nhom04_CongNghePhanMem.Models
+@model List<SANPHAM>
+
+@{
+    ViewBag.Title = "SanPham";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="container py-4">
+
+    <div class="mb-4">
+        
+        <img src="~/Content/Images/t2.jpg" class="img-fluid rounded" style="width:100%; max-height:600px; object-fit:cover;" alt="Banner sản phẩm" />
+    </div>
+
+
+    <div class="row">
+        <!-- Sidebar: Danh mục & Lọc -->
+        <div class="col-md-3 mb-4">
+            <div class="card p-3">
+                <h5 style="color:#8B1A3C; font-weight:700; margin-bottom:15px;">Danh mục sản phẩm</h5>
+                <!-- Danh mục sản phẩm dạng nút chọn -->
+                <div class="d-flex flex-column gap-2">
+                    <a href="@Url.Action("SanPham", new { categoryId = (int?)null, search = Request.QueryString["search"], page = 1 })"
+                       class="btn btn-sm @(ViewBag.SelectedCategory == null ? "btn-danger" : "btn-outline-danger")"
+                       style="width:100%; text-align:left;">
+                        Tất cả sản phẩm
+                    </a>
+                    @foreach (SelectListItem cat in ViewBag.Categories)
+                    {
+                        var isActive = (ViewBag.SelectedCategory == int.Parse(cat.Value));
+                        <a href="@Url.Action("SanPham", new { categoryId = cat.Value, search = Request.QueryString["search"], page = 1 })"
+                           class="btn btn-sm @(isActive ? "btn-danger" : "btn-outline-danger")"
+                           style="width:100%; text-align:left;">
+                            @cat.Text
+                        </a>
+                    }
+                </div>
+
+
+
+                <form method="get" class="d-flex flex-column gap-2">
+                    <input type="text" name="search" value="@Request.QueryString["search"]" class="form-control" placeholder="Tìm kiếm...">
+
+                    <select name="price" class="form-select">
+                        <option value="">Mức giá</option>
+                        <option value="duoi-1" @(ViewBag.CurrentPrice == "duoi-1" ? "selected" : "")>Dưới 1 trăm</option>
+                        <option value="1-5" @(ViewBag.CurrentPrice == "2-5" ? "selected" : "")>2-5 trăm</option>
+                        <option value="tren-5" @(ViewBag.CurrentPrice == "tren-5" ? "selected" : "")>Trên 5 trăm</option>
+                    </select>
+                    
+                    <button class="btn btn-danger mt-2">Lọc</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Main: Danh sách sản phẩm -->
+        <div class="col-md-9">
+            <h2 class="mb-3">Danh sách sản phẩm</h2>
+            <div class="row g-4">
+                @foreach (var sp in Model)
+                {
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="card h-100 shadow-sm rounded-3">
+                            <img src="@Url.Content("~/Content/Images/")@sp.HINHANH" class="card-img-top" style="height: 200px; object-fit: cover;" />
+                            <div class="card-body text-center">
+                                <h6 class="card-title">@sp.TENSP</h6>
+                                <p class="card-text fw-bold">@sp.GIABAN.ToString("N0") VND</p>
+                                <a href="@Url.Action("XemChiTiet", "Home", new { id = sp.MASP })" class="btn btn-sm btn-outline-danger">
+                                    Xem chi tiết
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Pagination -->
+            <div class="d-flex justify-content-center mt-4">
+                <ul class="pagination">
+                    <!-- Nút quay lui -->
+                    <li class="page-item @(ViewBag.Page == 1 ? "disabled" : "")">
+                        <a class="page-link text-danger"  href="@Url.Action("SanPham", new { page = ViewBag.Page - 1, search = Request.QueryString["search"], categoryId = ViewBag.SelectedCategory, price = ViewBag.CurrentPrice })">
+                            «
+                        </a>
+                    </li>
+
+                    <!-- Các trang -->
+                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        <li class="page-item @(i == ViewBag.Page ? "active" : "")">
+                            <a class="page-link text-danger"  href="@Url.Action("SanPham", new { page = i, search = Request.QueryString["search"], categoryId = ViewBag.SelectedCategory, price = ViewBag.CurrentPrice })">
+                                @i
+                            </a>
+                        </li>
+                    }
+
+                    <!-- Nút quay tới -->
+                    <li class="page-item @(ViewBag.Page == ViewBag.TotalPages ? "disabled" : "")">
+                        <a class="page-link text-danger"  href="@Url.Action("SanPham", new { page = ViewBag.Page + 1, search = Request.QueryString["search"], categoryId = ViewBag.SelectedCategory, price = ViewBag.CurrentPrice })">
+                            »
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+</div>

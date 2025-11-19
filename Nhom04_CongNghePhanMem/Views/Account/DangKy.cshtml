@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@using Nhom04_CongNghePhanMem.Models;
+@model Register
+
+<div class="container py-5" style="background-color:#fff7e6;">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-11 col-sm-12">
+            <div class="row bg-white p-4 rounded-4 shadow-sm align-items-center">
+
+                <!-- Ảnh -->
+               
+                <div class="col-lg-5 col-md-5 text-center mb-4 mb-md-0">
+                    <img src="~/Content/Images/5dangki.jpg"
+                         class="img-fluid rounded-4" />
+                </div>
+                <!-- Form -->
+                <div class="col-lg-7 col-md-7">
+
+                    <h2 class="fw-bold mb-4"
+                        style="font-family: 'Pony', sans-serif; font-size: 36px;">
+                        Đăng ký
+                    </h2>
+                    <form method="post" action="/Account/DangKy">
+                        @Html.AntiForgeryToken()
+                        <div class="mb-3">
+                            <label class="form-label">Tên đăng nhập</label>
+                            <input type="text" name="TENDANGNHAP" class="form-control rounded-pill p-3"
+                                   style="background:#f2c6d4; border:none;" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Mật khẩu</label>
+                            <input type="password" name="MATKHAU" class="form-control rounded-pill p-3"
+                                   style="background:#f2c6d4; border:none;" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Xác nhận mật khẩu</label>
+                            <input type="password" name="XACNHANMATKHAU" class="form-control rounded-pill p-3"
+                                   style="background:#f2c6d4; border:none;" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="EMAIL" class="form-control rounded-pill p-3"
+                                   style="background:#f2c6d4; border:none;" />
+                        </div>
+
+
+                        <div class="text-center">
+                            <button type="submit"
+                                    class="btn text-white rounded-pill px-4 py-2"
+                                    style="background:#b71818; width: 160px;">
+                                Đăng ký
+                            </button>
+
+                            <p class="mt-3">
+                                Đã có tài khoản?
+                                <a href="@Url.Action("Login", "Account")"
+                                   class="text-danger text-decoration-none">
+                                    Đăng nhập
+                                </a>
+                            </p>
+                        </div>
+                    </form>
+                  
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

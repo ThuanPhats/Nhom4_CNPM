@@ -1,0 +1,37 @@
+﻿@model List<Nhom04_CongNghePhanMem.Models.DONHANG>
+@{
+    ViewBag.Title = "Đơn hàng của tôi";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="container py-4">
+    <h3>Danh sách đơn hàng</h3>
+
+    <table class="table table-bordered mt-3">
+        <thead class="table-light">
+            <tr>
+                <th>#</th>
+                <th>Mã đơn hàng</th>
+                <th>Ngày đặt</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>@(i+1)</td>
+                    <td>@Model[i].MADH</td>
+                    <td>@Model[i].NGAYDAT.ToString("dd/MM/yyyy")</td>
+                    <td>@Model[i].TONGTIEN.ToString("N0") đ</td>
+                    <td>@Model[i].TRANGTHAI</td>
+                    <td>
+                        <a class="btn btn-sm btn-info" href="@Url.Action("ChiTietDonHang", "Home", new { id = Model[i].MADH})">Chi tiết</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

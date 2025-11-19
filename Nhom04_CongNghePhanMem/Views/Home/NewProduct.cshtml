@@ -3,19 +3,18 @@
 <div class="row g-4">
     @foreach (var sp in Model.Take(4))
     {
-        <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="card h-100 shadow-sm border-0">
-
-
-               <img src="~/Content/Images/@sp.HINHANH" class="card-img-top" style="height:250px; object-fit:cover;"/>
-               
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+            <div class="card h-100 shadow-sm rounded-3">
+                <img src="@Url.Content("~/Content/Images/")@sp.HINHANH" class="card-img-top" style="height: 200px; object-fit: cover;" />
                 <div class="card-body text-center">
-                    <h5 class="card-title">@sp.TENSP</h5>
-                    <p class="card-text text-danger fw-bold">@sp.GIABAN.ToString("C0")</p>
-                    <a href="@Url.Action("ChiTiet", "SanPham", new { id = sp.MASP })"
-                       class="btn btn-sm btn-primary">Xem chi tiết</a>
+                    <h6 class="card-title">@sp.TENSP</h6>
+                    <p class="card-text fw-bold">@sp.GIABAN.ToString("N0") VND</p>
+                    <a href="@Url.Action("XemChiTiet", "Home", new { id = sp.MASP })" class="btn btn-sm btn-outline-danger">
+                        Xem chi tiết
+                    </a>
                 </div>
             </div>
         </div>
     }
+
 </div>

@@ -1,0 +1,96 @@
+﻿
+@using Nhom04_CongNghePhanMem.Models
+@model GioHangSanPham
+
+@{
+    ViewBag.Title = "ThanhToan";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="container py-4">
+    <h3 class="mb-4">Check Out</h3>
+
+    <div class="row">
+        <!-- FORM THÔNG TIN KHÁCH HÀNG -->
+        <div class="col-md-7">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Thông tin khách hàng</h5>
+                    <form action="@Url.Action("DatHang", "Home")" method="post">
+                        <div class="mb-3">
+                            <label for="HoTen" class="form-label">Họ và tên</label>
+                            <input type="text" class="form-control" id="HoTen" name="HoTen" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="Email" name="Email" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="DienThoai" class="form-label">Số điện thoại</label>
+                            <input type="tel" class="form-control" id="DienThoai" name="DienThoai" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="DiaChi" class="form-label">Địa chỉ nhận hàng</label>
+                            <textarea class="form-control" id="DiaChi" name="DiaChi" rows="3" required></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Phương thức thanh toán</label>
+                            <select class="form-select" name="PhuongThucThanhToan" required>
+                                <option value="COD">Thanh toán khi nhận hàng (COD)</option>
+                                <option value="Bank">Chuyển khoản ngân hàng</option>
+                                <option value="VNPay">VNPay / Thanh toán online</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-danger w-100">Đặt hàng</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ORDER SUMMARY -->
+        <div class="col-md-5">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Order summary</h5>
+
+                    @foreach (var item in Model.lst)
+                    {
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>@item.vTenSP x @item.vSoLuong</span>
+                            <span>@(item.vGiaBan * item.vSoLuong).ToString("N0") đ</span>
+                        </div>
+                    }
+
+                    <hr />
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Subtotal</span>
+                        <span>@Model.TongThanhTien().ToString("N0") đ</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Discount</span>
+                        <span>-0 đ</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>Delivery fee</span>
+                        <span>0 đ</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between fw-bold">
+                        <span>Total</span>
+                        <span>@Model.TongThanhTien().ToString("N0") đ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

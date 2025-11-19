@@ -1,0 +1,93 @@
+﻿@using Nhom04_CongNghePhanMem.Models
+@model System.Collections.Generic.List<YEUCAUHOTRO>
+@{
+    ViewBag.Title = "HoTroKhachHang";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+
+
+<div class="container my-5">
+    <h2 class="mb-4 text-center" style="color:#8B1A3C; font-weight:700;">Hỗ Trợ Khách Hàng</h2>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success text-center">
+            @TempData["Success"]
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger text-center">
+            @TempData["Error"]
+        </div>
+    }
+
+    <!-- Form gửi yêu cầu mới -->
+    <div class="card mb-5 shadow-sm">
+        <div class="card-body">
+            @using (Html.BeginForm("HoTroKhachHang", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="mb-3">
+                    <textarea name="noiDungMoi" class="form-control" placeholder="Nhập nội dung yêu cầu..." rows="3"></textarea>
+                </div>
+                <div class="text-end">
+                    <button type="submit" class="btn btn-danger">Gửi yêu cầu</button>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Bảng danh sách yêu cầu đã gửi -->
+    @if (Model != null && Model.Count > 0)
+    {
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>Mã Yêu Cầu</th>
+                        <th>Mã Hóa</th>
+                        <th>Ngày gửi</th>
+                        <th>Nội dung</th>
+                        <th>Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-center">@item.MAYC</td>
+                            <td>@item.MAYC_MAHOA</td>
+                            <td class="text-center">@item.NGAYGUI</td>
+                            <td>@item.NOIDUNG</td>
+                            <td class="text-center">
+                                @if (item.TRANGTHAI == "Chưa xử lý")
+                                {
+                                    <span class="badge bg-warning">@item.TRANGTHAI</span>
+                                }
+                                else if (item.TRANGTHAI == "Đã xử lý")
+                                {
+                                    <span class="badge bg-success">@item.TRANGTHAI</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">@item.TRANGTHAI</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center">
+            Bạn chưa gửi yêu cầu hỗ trợ nào.
+        </div>
+    }
+</div>
+
+

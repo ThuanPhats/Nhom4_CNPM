@@ -1,0 +1,69 @@
+﻿@model Nhom04_CongNghePhanMem.Models.KHACHHANG
+@{
+    ViewBag.Title = "Quản lý tài khoản";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="container my-5">
+    <div class="card shadow p-4 p-md-5 rounded">
+        <h2 class="text-secondary mb-3">Tài khoản của tôi</h2>
+        <p class="text-muted mb-4">Quản lý thông tin cá nhân và đơn hàng</p>
+
+        <!-- Tabs -->
+        <ul class="nav nav-pills mb-4">
+            <li class="nav-item">
+                <a class="nav-link active" href="@Url.Action("QuanLy", "TaiKhoan")">
+                    <i class="fas fa-info-circle me-1"></i> Thông tin cá nhân
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("DonHang", "TaiKhoan")">
+                    <i class="fas fa-history me-1"></i> Lịch sử đơn hàng
+                </a>
+            </li>
+        </ul>
+
+        <!-- Thông báo cập nhật -->
+        @if (ViewBag.ThongBao != null)
+        {
+            <div class="alert alert-success">@ViewBag.ThongBao</div>
+        }
+
+        <!-- Form cập nhật thông tin -->
+        @using (Html.BeginForm("QuanLy", "TaiKhoan", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.MAKH)
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Họ và tên</label>
+                    @Html.TextBoxFor(model => model.HOTENKH, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.HOTENKH, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    @Html.TextBoxFor(model => model.EMAIL_KH, new { @class = "form-control", type = "email" })
+                    @Html.ValidationMessageFor(model => model.EMAIL_KH, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Số điện thoại</label>
+                    @Html.TextBoxFor(model => model.SDT_KH, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SDT_KH, "", new { @class = "text-danger" })
+                </div>
+                
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Địa chỉ</label>
+                @Html.TextAreaFor(model => model.DIACHI_KH, new { @class = "form-control", rows = 3 })
+                @Html.ValidationMessageFor(model => model.DIACHI_KH, "", new { @class = "text-danger" })
+            </div>
+
+            <button type="submit" class="btn btn-primary">Cập nhật thông tin</button>
+        }
+    </div>
+</div>

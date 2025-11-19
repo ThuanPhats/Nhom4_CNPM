@@ -127,11 +127,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\GioHangSanPham.cs" />
     <Compile Include="Models\QuanLiCuaHang.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QuanLiCuaHang.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Register.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -199,7 +202,10 @@
     <Content Include="Content\Images\anh7.jpg" />
     <Content Include="Content\Images\anh8.jpg" />
     <Content Include="Content\Images\anh9.jpg" />
+    <Content Include="Content\Images\b1.png" />
+    <Content Include="Content\Images\b2.jpg" />
     <Content Include="Content\Images\iconloaisp.jpg" />
+    <Content Include="Content\Images\t2.jpg" />
     <Content Include="Content\Images\top1.jpg" />
     <Content Include="Content\JS\bootstrap.bundle.min.js" />
     <Content Include="Content\JS\fontawesome.min.js" />
@@ -253,10 +259,24 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\HotProduct.cshtml" />
     <Content Include="Views\Home\NewProduct.cshtml" />
+    <Content Include="Views\Account\DangNhap.cshtml" />
+    <Content Include="Views\Account\DangKy.cshtml" />
+    <Content Include="Views\Home\MenuDMLoai.cshtml" />
+    <Content Include="Views\Home\SanPham.cshtml" />
+    <Content Include="Views\Home\XemChiTiet.cshtml" />
+    <Content Include="Views\Home\PartialDanhGia.cshtml" />
+    <Content Include="Views\Home\HoTroKhachHang.cshtml" />
+    <Content Include="Views\Home\GioiThieu.cshtml" />
+    <Content Include="Views\Home\BoSuuTap.cshtml" />
+    <Content Include="Views\Home\GioHang.cshtml" />
+    <Content Include="Views\Home\ThanhToan.cshtml" />
+    <Content Include="Views\Home\DatHangThanhCong.cshtml" />
+    <Content Include="Views\Home\QuanLy.cshtml" />
+    <Content Include="Views\Home\DonHang.cshtml" />
+    <Content Include="Views\Home\ChiTietDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Account\" />
     <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
