@@ -4,9 +4,13 @@ This repository contains the source code, project structure, and related resourc
 The goal is to apply modern software engineering principles, methodologies, and workflows into a real project.
 
 **📁 Repository Structure**
+
 Nhom04_CongNghePhanMem/ — Main source code
+
 packages/ — Dependencies (if any)
+
 *.sln — Visual Studio solution file
+
 Additional config directories
 
 **🔽 How to Download & Install**
