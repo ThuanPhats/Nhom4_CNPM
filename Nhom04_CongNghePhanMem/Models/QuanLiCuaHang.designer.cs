@@ -98,7 +98,7 @@ namespace Nhom04_CongNghePhanMem.Models
 			OnCreated();
 		}
 
-        public QuanLiCuaHangDataContext():base("Data Source=HP;Initial Catalog=QL_BANHANG_TRUCTUYEN;User ID=sa;Password=12345")
+        public QuanLiCuaHangDataContext():base("Data Source=ENTERYOURNAME;Initial Catalog=ENTERYOURDATA;User ID=ENTERYOURID;Password=ENTERYOURPASSWORD")
         {
         }
 
