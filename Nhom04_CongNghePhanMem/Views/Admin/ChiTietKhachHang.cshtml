@@ -1,0 +1,204 @@
+﻿@using System.Linq
+@model Nhom04_CongNghePhanMem.Models.ChiTietKH_Admin
+
+@{
+    ViewBag.Title = "Chi tiết khách hàng";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<style>
+    .cus-wrapper {
+        background: #fdf5e9;
+        border-radius: 12px;
+        padding: 20px 25px 25px;
+        margin-top: 15px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .cus-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #a0181c;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    .cus-box {
+        background: #ffffff;
+        border-radius: 10px;
+        border: 1px solid #f0d7c0;
+        padding: 15px 18px;
+        margin-bottom: 15px;
+    }
+
+    .cus-box-heading {
+        font-weight: 700;
+        color: #a0181c;
+        margin-bottom: 10px;
+    }
+
+    .cus-box p {
+        margin: 3px 0;
+    }
+
+    .order-table thead tr {
+        background: #d78787;
+        color: #fff;
+    }
+
+    .order-table thead th {
+        border-color: #d78787 !important;
+    }
+
+    .order-table tbody tr:hover {
+        background: #fff5ef;
+    }
+    /* FULL HỒNG */
+    .btn-pink {
+        background-color: #e797b0;
+        color: white !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+    }
+
+        .btn-pink:hover {
+            background-color: #a0181c;
+            border-color: #a0181c;
+        }
+
+    /* OUTLINE HỒNG */
+
+    .btn-pink-outline {
+        background-color: white;
+        color: #e797b0 !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+        text-decoration: none; /* bỏ gạch chân */
+    }
+
+        .btn-pink-outline:hover {
+            background-color: #e797b0;
+            color: white !important;
+            text-decoration: none; /* bỏ gạch chân khi hover */
+        }
+
+
+    .tag-success {
+        color: #4CAF50;
+        font-weight: bold;
+    }
+    .btn-custom {
+        background-color: #8ca0c4; /* màu nền xanh nhạt */
+        color: white; /* chữ màu trắng */
+        border: 2px solid #d35a5a; /* viền đỏ */
+        border-radius: 6px; /* bo góc */
+        font-weight: 600; /* chữ đậm vừa phải */
+        padding: 8px 20px; /* khoảng cách trên dưới và trái phải */
+        text-decoration: none; /* bỏ gạch chân */
+        display: inline-block;
+        transition: 0.3s;
+    }
+
+        .btn-custom:hover {
+            background-color: #7b90b8; /* màu nền tối hơn khi hover */
+            border-color: #a0181c; /* viền đỏ đậm hơn */
+            color: white;
+        }
+
+</style>
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-md-3">
+            @{ Html.RenderPartial("~/Views/Admin/Sidebar.cshtml"); }
+        </div>
+
+        <div class="col-md-9">
+            <div class="cus-wrapper">
+                <div class="row" style="margin-bottom:10px">
+                    <div class="col-md-8">
+                        <h2 class="cus-title">Chi tiết khách hàng</h2>
+                    </div>
+                    <div class="col-md-4 text-right" style="margin-top:5px">
+                        @Html.ActionLink(
+                            "Quay lại danh sách",
+                            "QuanLyKhachHang",
+                            "Admin",
+                            null,
+                            new { @class = "btn-custom" }
+                        )
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="cus-box">
+                            <div class="cus-box-heading">Thông tin khách hàng</div>
+                            <p><b>Mã KH:</b> @Model.KhachHang.MAKH_MAHOA</p>
+                            <p><b>Họ tên:</b> @Model.KhachHang.HOTENKH</p>
+                            <p><b>Số điện thoại:</b> @Model.KhachHang.SDT_KH</p>
+                            <p><b>Email:</b> @Model.KhachHang.EMAIL_KH</p>
+                            <p><b>Địa chỉ:</b> @Model.KhachHang.DIACHI_KH</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7">
+                        <div class="cus-box">
+                            <div class="cus-box-heading">Danh sách đơn hàng</div>
+
+                            <table class="table table-bordered table-striped order-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width:110px">Mã đơn</th>
+                                        <th style="width:120px">Ngày đặt</th>
+                                        <th>Trạng thái</th>
+                                        <th style="width:150px">Tổng tiền</th>
+                                        <th style="width:80px"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.DonHangs != null && Model.DonHangs.Any())
+                                    {
+                                        foreach (var dh in Model.DonHangs.OrderByDescending(d => d.NGAYDAT))
+                                        {
+                                            <tr>
+                                                <td>@dh.MADH_MAHOA</td>
+                                                <td>@dh.NGAYDAT.ToString("dd/MM/yyyy")</td>
+                                                <td>@dh.TRANGTHAI</td>
+                                                <td>@String.Format("{0:N0} VNĐ", dh.TONGTIEN)</td>
+                                                <td class="text-center">
+                                                    @Html.ActionLink(
+                                                        "Xem",
+                                                        "ChiTietDonHangAdmin",
+                                                        "Admin",
+                                                        new { id = dh.MADH },
+                                                        new { @class = "btn-pink-outline" }
+                                                    )
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="5" class="text-center">
+                                                Khách hàng chưa có đơn hàng nào.
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

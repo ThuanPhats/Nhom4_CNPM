@@ -1,0 +1,110 @@
+﻿<style>
+    /* Sidebar container */
+    .sidebar {
+        width: 250px; /* điều chỉnh vừa phải */
+        background: #7a0d0d; /* màu giống header */
+        color: #fff;
+        border-right: 1px solid #f9cbd8; /* viền hồng nhạt */
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        margin-top: 20px;
+        min-height: 100vh;
+    }
+
+        /* Brand / Logo */
+        .sidebar .brand {
+            padding: 1.2rem;
+            text-align: center;
+            border-bottom: 1px solid #f9cbd8;
+        }
+
+            .sidebar .brand h2 {
+                color: #fff; /* chữ trắng */
+                font-weight: 700;
+                margin: 0;
+                font-size: 1.5rem;
+            }
+
+        /* Links */
+        .sidebar .nav-link {
+            color: #fff;
+            border-radius: 8px;
+            padding: 0.6rem 1rem;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+            .sidebar .nav-link:hover {
+                background-color: #9f1239; /* đỏ tươi hover */
+                color: #fff;
+            }
+
+            .sidebar .nav-link.active {
+                background-color: #ec4899; /* giữ active màu hồng sáng */
+                color: #fff !important;
+            }
+
+    /* Submenu links */
+    .submenu .nav-link {
+        padding-left: 2.2rem;
+    }
+
+    /* Sidebar footer (nếu có) */
+    .sidebar-footer {
+        border-top: 1px solid #f9cbd8;
+        padding: 1rem;
+        margin-top: auto;
+        color: #fff;
+    }
+
+    /* Collapse button */
+    .sidebar button.nav-link {
+        background: transparent;
+        border: none;
+        color: #fff;
+        text-align: left;
+        font-size: 15px;
+        padding: 0.6rem 1rem;
+    }
+
+        .sidebar button.nav-link:hover {
+            background-color: #9f1239;
+            color: #fff;
+        }
+</style>
+
+<!-- Sidebar HTML giữ nguyên -->
+<div class="sidebar pt-4">
+    <div class="brand">
+        <h2>Quản lí cửa hàng</h2>
+    </div>
+
+    <nav class="flex-grow-1 p-3">
+        <ul class="nav flex-column gap-1">
+            <li><a href="/Admin/QuanTriAdmin" class="nav-link active"><i class="bi bi-speedometer2 me-2"></i>Tổng quan</a></li>
+            <li>
+                <button class="btn w-100 text-start nav-link" data-bs-toggle="collapse" data-bs-target="#salesMenu">
+                    <i class="bi bi-bag me-2"></i> Quản lý bán hàng
+                    <i class="bi bi-chevron-down float-end"></i>
+                </button>
+                <div class="collapse show submenu" id="salesMenu">
+                    <a href="/Admin/QuanLySanPham" class="nav-link"><i class="bi bi-bag-heart me-2"></i> Quản lý sản phẩm</a>
+                    <a href="/Admin/QuanLyDonHang" class="nav-link"><i class="bi bi-cart-check me-2"></i> Quản lý đơn hàng</a>
+                    <a href="/Admin/QuanLyDanhMuc" class="nav-link"><i class="bi bi-calendar3 me-2"></i> Quản lý danh mục</a>
+                    <a href="/Admin/QuanLyKhachHang" class="nav-link"><i class="bi bi-people me-2"></i> Quản lý khách hàng</a>
+                </div>
+            </li>
+            <li>
+                <a href="/Admin/BaocaoThongKe" class="nav-link">
+                    <i class="bi bi-bar-chart-line me-2"></i> Báo cáo
+                </a>
+            </li>
+            <li>
+                <a href="/Admin/YeuCauHoTro" class="nav-link">
+                    <i class="bi bi-bar-chart-line me-2"></i> Xử lý yêu cầu hỗ trợ
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

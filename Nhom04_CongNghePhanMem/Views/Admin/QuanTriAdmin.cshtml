@@ -1,0 +1,165 @@
+﻿@using Nhom04_CongNghePhanMem.Models
+@model ThongKe_Admin
+
+<style>
+    /* Card hover */
+    .card:hover {
+        transform: translateY(-5px);
+        transition: all 0.3s ease;
+        box-shadow: 0 3px 10px rgba(160, 24, 28, 0.2);
+    }
+
+    .dashboard-wrapper {
+        background: #fdf5e9;
+        border-radius: 12px;
+        padding: 20px 25px 25px;
+        margin-top: 15px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .dashboard-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #a0181c;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    .stat-card .card-header {
+        background: #a0181c;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .stat-card .card-body h3 {
+        color: #a0181c;
+        font-weight: 700;
+    }
+
+    .dashboard-table thead tr {
+        background: #d78787;
+        color: #fff;
+    }
+
+    .dashboard-table thead th {
+        border-color: #d78787 !important;
+    }
+
+    .dashboard-table tbody tr:hover {
+        background: #fff5ef;
+    }
+
+    .btn-pink-outline {
+        background-color: white;
+        color: #e797b0 !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+        text-decoration: none; /* bỏ gạch chân */
+    }
+
+        .btn-pink-outline:hover {
+            background-color: #e797b0;
+            color: white !important;
+            text-decoration: none; /* bỏ gạch chân khi hover */
+        }
+
+</style>
+
+<div class="container-fluid mt-4">
+    <div class="row">
+
+        <!-- SIDEBAR -->
+        <div class="col-md-3">
+            @{ Html.RenderPartial("~/Views/Admin/Sidebar.cshtml"); }
+        </div>
+
+        <!-- NỘI DUNG CHÍNH -->
+        <div class="col-md-9">
+
+            <div class="dashboard-wrapper">
+
+                <h2 class="dashboard-title">Dashboard Quản Trị</h2>
+
+                <!-- Thống kê tổng quan -->
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="card stat-card text-center shadow-sm">
+                            <div class="card-header">Tổng Sản Phẩm</div>
+                            <div class="card-body">
+                                <h3>@ViewBag.TongSanPham</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card stat-card text-center shadow-sm">
+                            <div class="card-header">Sản Phẩm Còn Hàng</div>
+                            <div class="card-body">
+                                <h3>@ViewBag.SanPhamConHang</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card stat-card text-center shadow-sm">
+                            <div class="card-header">Sản Phẩm Hết Hàng</div>
+                            <div class="card-body">
+                                <h3>@ViewBag.SanPhamHetHang</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top 5 sản phẩm điểm cao -->
+                <h4 class="text-red mb-3 fw-bold">Top 5 Sản Phẩm Điểm Cao</h4>
+                <div class="table-responsive shadow-sm rounded">
+                    <table class="table table-bordered table-hover align-middle mb-0 dashboard-table text-center">
+                        <thead>
+                            <tr>
+                                <th>Mã SP</th>
+                                <th class="text-start ps-3">Tên SP</th>
+                                <th>Giá Bán</th>
+                                <th>Số Lượng Tồn</th>
+                                <th>Điểm TB</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewBag.TopSanPham != null && ((List<SANPHAM>)ViewBag.TopSanPham).Any())
+                            {
+                                foreach (var sp in (List<SANPHAM>)ViewBag.TopSanPham)
+                                {
+                                    <tr>
+                                        <td>@(sp.MASP_MAHOA ?? sp.MASP.ToString())</td>
+                                        <td class="text-start ps-3">@sp.TENSP</td>
+                                        <td>@sp.GIABAN.ToString("C0")</td>
+                                        <td>@sp.SOLUONGTON</td>
+                                        <td>@sp.DIEMTB</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="5" class="text-center">Không có dữ liệu</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Nút điều hướng nhanh -->
+                <div class="mt-4 d-flex gap-3">
+                    <a href="@Url.Action("QuanLySanPham", "Admin")" class="btn-pink-outline" >
+                        <i class="bi bi-box-seam me-2"></i>Quản Lý Sản Phẩm
+                    </a>
+                    <a href="@Url.Action("QuanLyDanhMuc", "Admin")" class="btn-pink-outline" >
+                        <i class="bi bi-tags me-2"></i>Quản Lý Danh Mục
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -20,7 +20,7 @@ namespace Nhom04_CongNghePhanMem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        
+
         public ActionResult DangNhap(string loginInput, string MATKHAU)
         {
             if (string.IsNullOrWhiteSpace(loginInput) || string.IsNullOrWhiteSpace(MATKHAU))
@@ -40,17 +40,34 @@ namespace Nhom04_CongNghePhanMem.Controllers
                 return View();
             }
 
-            // Lưu session
-            Session["MaKH"] = tk.MATK;
-            Session["UserName"] = tk.TENDANGNHAP;
+            // Phân quyền admin/nhân viên
+            if (tk.QUYEN == "QuanTri" || tk.QUYEN == "NhanVien")
+            {
+                Session["UserId"] = tk.MATK;        // Dùng MATK của tài khoản admin
+                Session["UserName"] = tk.TENDANGNHAP;
+                Session["UserRole"] = tk.QUYEN;
+
+                return RedirectToAction("Index", "Home"); // Vào dashboard admin
+            }
+
+            // Chỉ tìm khách hàng nếu là Khách hàng
+            KHACHHANG kh = data.KHACHHANGs.FirstOrDefault(x => x.MATK == tk.MATK);
+
+            if (kh == null)
+            {
+                ViewBag.Error = "Tài khoản chưa có thông tin khách hàng.";
+                return View();
+            }
+
+            // Lưu session cho khách hàng
+            Session["UserId"] = kh.MAKH;
+            Session["UserName"] = kh.HOTENKH;
             Session["UserRole"] = tk.QUYEN;
 
-            // Phân quyền
-            if (Session["UserRole"].ToString() == "QuanTri" || Session["UserRole"].ToString() == "NhanVien")
-                return RedirectToAction("QuanTri", "Admin");
-
             return RedirectToAction("Index", "Home");
+
         }
+
 
 
 
@@ -69,36 +86,59 @@ namespace Nhom04_CongNghePhanMem.Controllers
 
 
         [HttpGet]
+     
         public ActionResult DangKy()
         {
-            return View();
+            return View(new Register()); // gửi model trống
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DangKy(TAIKHOAN taiKhoan, KHACHHANG khachHang)
+       
+        public ActionResult DangKy(Register model)
         {
             if (!ModelState.IsValid)
-                return View(taiKhoan);
+                return View(model);
 
-            // Kiểm tra tên đăng nhập tồn tại
-            if (data.TAIKHOANs.Any(t => t.TENDANGNHAP == taiKhoan.TENDANGNHAP))
+            if (string.IsNullOrWhiteSpace(model.TENDANGNHAP))
             {
-                ViewBag.Error = "Tên đăng nhập đã tồn tại!";
-                return View(taiKhoan);
+                ModelState.AddModelError("TENDANGNHAP", "Tên đăng nhập không được để trống");
+                return View(model);
             }
 
-            // Gán role Khách hàng
-            taiKhoan.QUYEN = "KhachHang";
+            if (data.TAIKHOANs.Any(t => t.TENDANGNHAP == model.TENDANGNHAP))
+            {
+                ViewBag.Error = "Tên đăng nhập đã tồn tại!";
+                return View(model);
+            }
 
-            // Thêm TAIKHOAN và KHACHHANG
+            // Tạo tài khoản và khách hàng
+            TAIKHOAN taiKhoan = new TAIKHOAN
+            {
+                TENDANGNHAP = model.TENDANGNHAP,
+                MATKHAU = model.MATKHAU,
+                EMAIL = model.EMAIL,
+                QUYEN = "KhachHang"
+            };
             data.TAIKHOANs.InsertOnSubmit(taiKhoan);
-            khachHang.MATK = taiKhoan.MATK;
-            data.KHACHHANGs.InsertOnSubmit(khachHang);
-
             data.SubmitChanges();
 
-            return RedirectToAction("DangNhap");
+            KHACHHANG khachHang = new KHACHHANG
+            {
+                MATK = taiKhoan.MATK,
+                HOTENKH = model.HOTENKH,
+                SDT_KH = model.SDT_KH,
+                EMAIL_KH = model.EMAIL,
+                DIACHI_KH = ""
+            };
+            data.KHACHHANGs.InsertOnSubmit(khachHang);
+            data.SubmitChanges();
+
+            // Gửi thông báo và chuyển view
+            TempData["SuccessMessage"] = "Đăng ký thành công! Đang chuyển sang đăng nhập...";
+            return RedirectToAction("DangNhap", "Account");
         }
+
+
     }
 }

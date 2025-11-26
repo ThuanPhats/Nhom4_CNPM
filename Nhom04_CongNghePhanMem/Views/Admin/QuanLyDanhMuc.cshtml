@@ -1,0 +1,212 @@
+﻿@using Nhom04_CongNghePhanMem.Models
+@model IEnumerable<LOAISANPHAM>
+
+@{
+    ViewBag.Title = "Quản lý danh mục";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<style>
+    .dm-wrapper {
+        background: #fdf5e9;
+        border-radius: 12px;
+        padding: 20px 25px 25px;
+        margin-top: 15px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .dm-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #a0181c;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    .dm-search-label {
+        font-weight: 600;
+        color: #a0181c;
+        margin-bottom: 5px;
+    }
+
+    .dm-table thead tr {
+        background: #d78787;
+        color: #fff;
+    }
+
+    .dm-table thead th {
+        border-color: #d78787 !important;
+    }
+
+    .dm-table tbody tr:hover {
+        background: #fff5ef;
+    }
+
+    /* FULL HỒNG */
+    .btn-pink {
+        background-color: #e797b0;
+        color: white !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+    }
+
+        .btn-pink:hover {
+            background-color: #a0181c;
+            border-color: #a0181c;
+        }
+
+    /* OUTLINE HỒNG */
+
+    .btn-pink-outline {
+        background-color: white;
+        color: #e797b0 !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+        text-decoration: none; /* bỏ gạch chân */
+    }
+
+        .btn-pink-outline:hover {
+            background-color: #e797b0;
+            color: white !important;
+            text-decoration: none; /* bỏ gạch chân khi hover */
+        }
+
+
+    .tag-success {
+        color: #4CAF50;
+        font-weight: bold;
+    }
+</style>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+
+
+
+<div class="container-fluid mt-4">
+    <div class="row">
+
+
+        <div class="col-md-3">
+            @{ Html.RenderPartial("~/Views/Admin/Sidebar.cshtml"); }
+        </div>
+
+        <div class="col-md-9">
+
+            <div class="dm-wrapper">
+                <div class="row" style="margin-bottom:10px">
+                    <div class="col-md-8">
+                        <h2 class="dm-title">Quản lý danh mục sản phẩm</h2>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom:15px">
+                    <!-- Ô tìm kiếm -->
+                    <div class="col-md-6">
+                        <div>
+
+                            @using (Html.BeginForm("QuanLyDanhMuc", "Admin", FormMethod.Get))
+                            {
+                                <div class="form-inline" style="display:flex; gap:8px;">
+                                    <input type="text"
+                                           name="search"
+                                           class="form-control"
+                                           style="flex:1"
+                                           value="@(ViewBag.Search ?? "")"
+                                           placeholder="Nhập tên danh mục cần tìm" />
+                                    <button type="submit" class="btn-pink ">Tìm</button>
+                                    @Html.ActionLink(
+                                        "Quay lại",
+                                        "QuanLyDanhMuc",
+                                        null,
+                                        new { @class = "btn-pink-outline " }
+                                    )
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Ô thêm danh mục -->
+                    <div class="col-md-6">
+                        <div>
+
+                            @using (Html.BeginForm("ThemDanhMuc", "Admin", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="form-inline" style="display:flex; gap:8px;">
+                                    <input type="text"
+                                           name="TENLOAI"
+                                           class="form-control"
+                                           style="flex:1"
+                                           placeholder="Nhập tên danh mục cần thêm" />
+                                    <button type="submit" class="btn-pink-outline ">Thêm</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-bordered table-striped dm-table">
+                    <thead>
+                        <tr>
+                            <th style="width:120px">Mã loại</th>
+                            <th>Tên loại</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var dm in Model)
+                        {
+                            <tr>
+                                <td>@dm.MALOAI_MAHOA</td>
+                                <td>
+                                    @using (Html.BeginForm("SuaDanhMuc", "Admin", FormMethod.Post, new { @class = "form-inline", style = "display:flex; gap:8px;" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.Hidden("MALOAI", dm.MALOAI)
+
+                                        <input type="text"
+                                               name="TENLOAI"
+                                               value="@dm.TENLOAI"
+                                               class="form-control"
+                                               style="flex:1" />
+
+                                        <button type="submit" class="btn-pink-outline ">Lưu</button>
+
+                                        @Html.ActionLink(
+                                            "Xóa",
+                                            "XoaDanhMuc",
+                                            "Admin",
+                                            new { id = dm.MALOAI },
+                                            new
+                                            {
+                                                @class = "btn btn-danger btn-sm",
+                                                onclick = "return confirm('Xóa danh mục này?');"
+                                            })
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+

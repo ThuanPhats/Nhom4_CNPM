@@ -1,7 +1,7 @@
 ﻿@model Nhom04_CongNghePhanMem.Models.GioHangSanPham
 
 @{
-    ViewBag.Title = "Giỏ hàng";
+
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
@@ -10,11 +10,31 @@
 
     @if (Model == null || Model.lst.Count == 0)
     {
-        <div class="text-center py-5">
-            <i class="fa fa-shopping-cart fa-4x text-muted"></i>
-            <h4 class="mt-3">Giỏ hàng trống</h4>
-            <a href="@Url.Action("SanPham", "Home")" class="btn btn-outline-primary mt-3">← Tiếp tục mua sắm</a>
+        <div class="empty-cart-area d-flex justify-content-center align-items-center py-5" style="min-height: 70vh; background: #fff0f6;">
+            <div class="empty-cart-card text-center bg-white shadow-lg rounded-4 p-5" style="max-width: 600px;">
+
+                <!-- Icon giỏ hàng -->
+                <div class="empty-cart-icon mb-3">
+                    <i class="bi bi-bag-x-fill" style="font-size: 70px; color: #ec4899; animation: float 2s infinite ease-in-out;"></i>
+                </div>
+
+                <!-- Tiêu đề -->
+                <h3 class="fw-bold text-pink mb-3" style="color: #be185d;">Giỏ hàng của bạn đang trống!</h3>
+
+                <!-- Mô tả -->
+                <p class="text-secondary mb-4 fs-5">
+                    Hãy khám phá các <strong>bộ sưu tập trang phục tuyệt đẹp</strong> để chọn tạo ra cho mình phong cách riêng biệt, độc đáo hãy lựa chọn sản phẩm
+                </p>
+
+                <!-- Nút quay lại danh sách sản phẩm -->
+                <a href="@Url.Action("SanPham", "Home")"
+                   class="btn btn-pink"
+                   style=" color: white; border: none; transition: all 0.3s;">
+                    <i class="bi bi-arrow-right-circle-fill me-2"></i> Bắt đầu chọn sản phẩm
+                </a>
+            </div>
         </div>
+
     }
     else
     {
@@ -38,7 +58,7 @@
                                 <p><strong>Size:</strong> @item.vSize</p>
                                 <p>
                                     <strong>Màu:</strong>
-                                    
+
                                     @item.vMau
                                 </p>
 
@@ -95,7 +115,7 @@
                             <span>@Model.TongThanhTien().ToString("N0") đ</span>
                         </div>
 
-                        <a href="@Url.Action("ThanhToan", "Home")" class="btn btn-danger w-100 mt-3">Thanh toán</a>
+                        <a href="@Url.Action("ThanhToan", "Home")" class="btn btn-pink">Thanh toán</a>
                     </div>
                 </div>
             </div>
@@ -110,4 +130,57 @@
         height: 20px;
         border-radius: 4px;
     }
+
+ 
+    .btn-pink {
+        background-color: #e797b0;
+        color: white !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+    }
+
+    .btn-pink:hover {
+        background-color: #a0181c;
+        border-color: #a0181c;
+    }
+
+    .btn-pink-outline {
+        background-color: white;
+        color: #e797b0 !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+        text-decoration: none; /* bỏ gạch chân */
+    }
+
+        .btn-pink-outline:hover {
+            background-color: #e797b0;
+            color: white !important;
+            text-decoration: none; /* bỏ gạch chân khi hover */
+        }
+
+    .btn-custom {
+        background-color: #8ca0c4; /* màu nền xanh nhạt */
+        color: white; /* chữ màu trắng */
+        border: 2px solid #d35a5a; /* viền đỏ */
+        border-radius: 6px; /* bo góc */
+        font-weight: 600; /* chữ đậm vừa phải */
+        padding: 8px 20px; /* khoảng cách trên dưới và trái phải */
+        text-decoration: none; /* bỏ gạch chân */
+        display: inline-block;
+        transition: 0.3s;
+    }
+
+        .btn-custom:hover {
+            background-color: #7b90b8; /* màu nền tối hơn khi hover */
+            border-color: #a0181c; /* viền đỏ đậm hơn */
+            color: white;
+        }
+
+
 </style>

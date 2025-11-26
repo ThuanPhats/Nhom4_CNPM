@@ -1,0 +1,282 @@
+﻿@using Nhom04_CongNghePhanMem.Models
+@model DonHang_Admin
+
+@{
+    ViewBag.Title = "Chi tiết đơn hàng";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<style>
+    .order-detail-wrapper {
+        background: #fdf5e9;
+        border-radius: 16px;
+        padding: 25px 30px 30px;
+        margin-top: 20px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .order-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #a0181c;
+        margin-bottom: 15px;
+    }
+
+    .order-info-label {
+        font-weight: 600;
+        color: #a0181c;
+        width: 130px;
+        display: inline-block;
+    }
+
+    .order-status-badge {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #fff;
+    }
+
+    .status-CHOXACNHAN {
+        background: #f0ad4e;
+    }
+
+    .status-DAXACNHAN {
+        background: #5bc0de;
+    }
+
+    .status-DANGGIAOHANG {
+        background: #337ab7;
+    }
+
+    .status-DAGIAOHANG {
+        background: #5cb85c;
+    }
+
+    .status-DAHUY {
+        background: #d9534f;
+    }
+
+    .status-HOANHANG {
+        background: #777;
+    }
+
+    .order-section-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: #a0181c;
+    }
+
+    .order-actions {
+        margin-top: 15px;
+    }
+
+    .table-order-detail th {
+        background: #d78787;
+        text-align: center;
+        vertical-align: middle !important;
+    }
+
+    .table-order-detail td {
+        vertical-align: middle !important;
+    }
+    /* FULL HỒNG */
+    .btn-pink {
+        background-color: #e797b0;
+        color: white !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+    }
+
+        .btn-pink:hover {
+            background-color: #a0181c;
+            border-color: #a0181c;
+        }
+
+    /* OUTLINE HỒNG */
+
+    .btn-pink-outline {
+        background-color: white;
+        color: #e797b0 !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+        text-decoration: none; /* bỏ gạch chân */
+    }
+
+        .btn-pink-outline:hover {
+            background-color: #e797b0;
+            color: white !important;
+            text-decoration: none; /* bỏ gạch chân khi hover */
+        }
+
+
+    .tag-success {
+        color: #4CAF50;
+        font-weight: bold;
+    }
+
+    .btn-custom {
+        background-color: #8ca0c4; /* màu nền xanh nhạt */
+        color: white; /* chữ màu trắng */
+        border: 2px solid #d35a5a; /* viền đỏ */
+        border-radius: 6px; /* bo góc */
+        font-weight: 600; /* chữ đậm vừa phải */
+        padding: 8px 20px; /* khoảng cách trên dưới và trái phải */
+        text-decoration: none; /* bỏ gạch chân */
+        display: inline-block;
+        transition: 0.3s;
+    }
+
+        .btn-custom:hover {
+            background-color: #7b90b8; /* màu nền tối hơn khi hover */
+            border-color: #a0181c; /* viền đỏ đậm hơn */
+            color: white;
+        }
+</style>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-md-3">
+            @{ Html.RenderPartial("~/Views/Admin/Sidebar.cshtml"); }
+        </div>
+
+        <div class="col-md-9">
+            <div class="order-detail-wrapper">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="order-title">CHI TIẾT ĐƠN HÀNG</div>
+                    </div>
+                    <div class="col-md-4 text-right">
+                        @Html.ActionLink("Quay lại danh sách", "QuanLyDonHang", "Admin",
+                            null, new { @class = "btn-custom " })
+                    </div>
+                </div>
+
+                <!-- THÔNG TIN ĐƠN HÀNG -->
+                <div class="row" style="margin-top:10px">
+                    <div class="col-md-7">
+                        <div class="order-section-title">Thông tin đơn hàng</div>
+                        <p>
+                            <span class="order-info-label">Mã đơn:</span>
+                            <span>@Model.DonHang.MADH_MAHOA</span>
+                        </p>
+                        <p>
+                            <span class="order-info-label">Khách hàng:</span>
+                            <span>@(Model.DonHang.KHACHHANG != null ? Model.DonHang.KHACHHANG.HOTENKH : "")</span>
+                        </p>
+                        <p>
+                            <span class="order-info-label">Ngày đặt:</span>
+                            <span>@Model.DonHang.NGAYDAT.ToString("dd/MM/yyyy")</span>
+                        </p>
+
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="order-section-title">Trạng thái đơn hàng</div>
+
+                        @{
+                            var tt = Model.DonHang.TRANGTHAI ?? "";
+                            string statusClass = "";
+                            switch (tt.ToUpper())
+                            {
+                                case "CHỜ XÁC NHẬN": statusClass = "status-CHOXACNHAN"; break;
+                                case "ĐÃ XÁC NHẬN": statusClass = "status-DAXACNHAN"; break;
+                                case "ĐANG GIAO HÀNG": statusClass = "status-DANGGIAOHANG"; break;
+                                case "ĐÃ GIAO HÀNG": statusClass = "status-DAGIAOHANG"; break;
+                                case "ĐÃ HỦY": statusClass = "status-DAHUY"; break;
+                                case "HOÀN HÀNG": statusClass = "status-HOANHANG"; break;
+                            }
+                        }
+
+                        <p>
+                            <span class="order-info-label">Hiện tại:</span>
+                            <span class="order-status-badge @statusClass">
+                                @Model.DonHang.TRANGTHAI
+                            </span>
+                        </p>
+
+                        @using (Html.BeginForm("CapNhatTrangThaiDon", "Admin", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("id", Model.DonHang.MADH)
+
+                            <div class="form-inline order-actions">
+                                <label style="margin-right:8px">Cập nhật trạng thái:</label>
+                                <select name="trangThai" class="form-control" style="margin-right:8px">
+                                    @{
+                                        string[] listTT = new string[] {
+                         "CHỜ XÁC NHẬN",
+                         "ĐÃ XÁC NHẬN",
+                         "ĐANG GIAO HÀNG",
+                         "ĐÃ GIAO HÀNG",
+                         "ĐÃ HỦY",
+                         "HOÀN HÀNG"
+                     };
+                                        foreach (var item in listTT)
+                                        {
+                                            <option value="@item" @(Model.DonHang.TRANGTHAI == item ? "selected" : "")>@item</option>
+                                        }
+                                    }
+                                </select>
+                                <button type="submit" class = "btn-pink-outline">Lưu</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- CHI TIẾT SẢN PHẨM -->
+                <div style="margin-top:25px">
+                    <div class="order-section-title">Chi tiết sản phẩm</div>
+
+                    <table class="table table-bordered table-striped table-order-detail">
+                        <tr>
+                            <th style="width:30%;color:#ffff" ;>Sản phẩm</th>
+                            <th style="width: 20%; color: #ffff">Ảnh</th>
+                            <th style="width: 10%; color: #ffff">Đơn giá</th>
+                            <th style="width: 15%; color: #ffff">Số lượng</th>
+                            <th style="width: 25%; color: #ffff">Thành tiền</th>
+                        </tr>
+
+                        @foreach (var ct in Model.ChiTiet)
+                        {
+                            <tr>
+                                <td>@(ct.SANPHAM != null ? ct.SANPHAM.TENSP : "")</td>
+                                <td class="text-center"><img src="~/Content/Images/@ct.SANPHAM.HINHANH" width="20" /></td>
+                                <td class="text-right">@String.Format("{0:N0} VNĐ", ct.DONGIA)</td>
+                                <td class="text-center">@ct.SOLUONG</td>
+                                <td class="text-right">@String.Format("{0:N0} VNĐ", ct.DONHANG.TONGTIEN)</td>
+                            </tr>
+                        }
+
+                        <tr>
+                            <td colspan="4" class="text-right" style="font-weight:600">Tổng cộng:</td>
+                            <td class="text-right" style="font-weight:700;color:#d9534f">
+                                @String.Format("{0:N0} VNĐ", Model.DonHang.TONGTIEN)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

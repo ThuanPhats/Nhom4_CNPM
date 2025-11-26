@@ -9,7 +9,7 @@
 <div class="container py-4">
 
     <div class="mb-4">
-        
+
         <img src="~/Content/Images/t2.jpg" class="img-fluid rounded" style="width:100%; max-height:600px; object-fit:cover;" alt="Banner sản phẩm" />
     </div>
 
@@ -21,16 +21,16 @@
                 <h5 style="color:#8B1A3C; font-weight:700; margin-bottom:15px;">Danh mục sản phẩm</h5>
                 <!-- Danh mục sản phẩm dạng nút chọn -->
                 <div class="d-flex flex-column gap-2">
-                    <a href="@Url.Action("SanPham", new { categoryId = (int?)null, search = Request.QueryString["search"], page = 1 })"
-                       class="btn btn-sm @(ViewBag.SelectedCategory == null ? "btn-danger" : "btn-outline-danger")"
+                    <a href="@Url.Action("SanPham", "Home",new { categoryId = (int?)null, search = Request.QueryString["search"], page = 1 })"
+                       class="btn btn-sm @(ViewBag.SelectedCategory == null ? "btn-pink" : "btn-outline-danger")"
                        style="width:100%; text-align:left;">
                         Tất cả sản phẩm
                     </a>
                     @foreach (SelectListItem cat in ViewBag.Categories)
                     {
                         var isActive = (ViewBag.SelectedCategory == int.Parse(cat.Value));
-                        <a href="@Url.Action("SanPham", new { categoryId = cat.Value, search = Request.QueryString["search"], page = 1 })"
-                           class="btn btn-sm @(isActive ? "btn-danger" : "btn-outline-danger")"
+                        <a href="@Url.Action("SanPham","Home", new { categoryId = cat.Value, search = Request.QueryString["search"], page = 1 })"
+                           class="btn btn-sm @(isActive ? "btn-danger" : "btn-pink-outline")"
                            style="width:100%; text-align:left;">
                             @cat.Text
                         </a>
@@ -45,11 +45,11 @@
                     <select name="price" class="form-select">
                         <option value="">Mức giá</option>
                         <option value="duoi-1" @(ViewBag.CurrentPrice == "duoi-1" ? "selected" : "")>Dưới 1 trăm</option>
-                        <option value="1-5" @(ViewBag.CurrentPrice == "2-5" ? "selected" : "")>2-5 trăm</option>
+                        <option value="1-5" @(ViewBag.CurrentPrice == "1-5" ? "selected" : "")>1-5 trăm</option>
                         <option value="tren-5" @(ViewBag.CurrentPrice == "tren-5" ? "selected" : "")>Trên 5 trăm</option>
                     </select>
-                    
-                    <button class="btn btn-danger mt-2">Lọc</button>
+
+                    <button class="btn-pink mt-2">Lọc</button>
                 </form>
             </div>
         </div>
@@ -57,6 +57,14 @@
         <!-- Main: Danh sách sản phẩm -->
         <div class="col-md-9">
             <h2 class="mb-3">Danh sách sản phẩm</h2>
+            <!-- Thông báo kết quả tìm kiếm -->
+            <h3>@(ViewBag.Search != null ? $"Kết quả tìm kiếm cho: '{ViewBag.Search}'" : "Tất cả sản phẩm")</h3>
+            @if (ViewBag.ThongBao != null)
+            {
+                <div class="alert @(Model.Count > 0 ? "alert-success" : "alert-warning")">
+                    @ViewBag.ThongBao
+                </div>
+            }
             <div class="row g-4">
                 @foreach (var sp in Model)
                 {
@@ -66,7 +74,7 @@
                             <div class="card-body text-center">
                                 <h6 class="card-title">@sp.TENSP</h6>
                                 <p class="card-text fw-bold">@sp.GIABAN.ToString("N0") VND</p>
-                                <a href="@Url.Action("XemChiTiet", "Home", new { id = sp.MASP })" class="btn btn-sm btn-outline-danger">
+                                <a href="@Url.Action("XemChiTiet", "Home", new { id = sp.MASP })" class="btn-pink-outline">
                                     Xem chi tiết
                                 </a>
                             </div>
@@ -80,7 +88,7 @@
                 <ul class="pagination">
                     <!-- Nút quay lui -->
                     <li class="page-item @(ViewBag.Page == 1 ? "disabled" : "")">
-                        <a class="page-link text-danger"  href="@Url.Action("SanPham", new { page = ViewBag.Page - 1, search = Request.QueryString["search"], categoryId = ViewBag.SelectedCategory, price = ViewBag.CurrentPrice })">
+                        <a class="page-link  text-danger" href="@Url.Action("SanPham", new { page = ViewBag.Page - 1, search = Request.QueryString["search"], categoryId = ViewBag.SelectedCategory, price = ViewBag.CurrentPrice })">
                             «
                         </a>
                     </li>
@@ -89,7 +97,7 @@
                     @for (int i = 1; i <= ViewBag.TotalPages; i++)
                     {
                         <li class="page-item @(i == ViewBag.Page ? "active" : "")">
-                            <a class="page-link text-danger"  href="@Url.Action("SanPham", new { page = i, search = Request.QueryString["search"], categoryId = ViewBag.SelectedCategory, price = ViewBag.CurrentPrice })">
+                            <a class="page-link text-danger"   href="@Url.Action("SanPham", new { page = i, search = Request.QueryString["search"], categoryId = ViewBag.SelectedCategory, price = ViewBag.CurrentPrice })">
                                 @i
                             </a>
                         </li>
@@ -97,7 +105,7 @@
 
                     <!-- Nút quay tới -->
                     <li class="page-item @(ViewBag.Page == ViewBag.TotalPages ? "disabled" : "")">
-                        <a class="page-link text-danger"  href="@Url.Action("SanPham", new { page = ViewBag.Page + 1, search = Request.QueryString["search"], categoryId = ViewBag.SelectedCategory, price = ViewBag.CurrentPrice })">
+                        <a class="page-link text-danger" href="@Url.Action("SanPham", new { page = ViewBag.Page + 1, search = Request.QueryString["search"], categoryId = ViewBag.SelectedCategory, price = ViewBag.CurrentPrice })">
                             »
                         </a>
                     </li>
@@ -108,3 +116,35 @@
         </div>
     </div>
 </div>
+<style>
+    .btn-pink {
+        background-color: #e797b0;
+        color: white !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+    }
+
+        .btn-pink:hover {
+            background-color: #a0181c;
+            border-color: #a0181c;
+        }
+    .btn-pink-outline {
+        background-color: white;
+        color: #e797b0 !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+        text-decoration: none; /* bỏ gạch chân */
+    }
+
+        .btn-pink-outline:hover {
+            background-color: #e797b0;
+            color: white !important;
+            text-decoration: none; /* bỏ gạch chân khi hover */
+        }
+</style>

@@ -1,10 +1,10 @@
-﻿
-@using Nhom04_CongNghePhanMem.Models
+﻿@using Nhom04_CongNghePhanMem.Models
 @model GioHangSanPham
 
 @{
     ViewBag.Title = "ThanhToan";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
+    var username = User.Identity.IsAuthenticated ? User.Identity.Name : "guest"; // hoặc tên login
 }
 
 <div class="container py-4">
@@ -16,7 +16,7 @@
             <div class="card shadow-sm mb-4">
                 <div class="card-body">
                     <h5 class="card-title mb-3">Thông tin khách hàng</h5>
-                    <form action="@Url.Action("DatHang", "Home")" method="post">
+                    <form id="checkoutForm" action="@Url.Action("DatHang", "Home")" method="post">
                         <div class="mb-3">
                             <label for="HoTen" class="form-label">Họ và tên</label>
                             <input type="text" class="form-control" id="HoTen" name="HoTen" required />
@@ -46,7 +46,7 @@
                             </select>
                         </div>
 
-                        <button type="submit" class="btn btn-danger w-100">Đặt hàng</button>
+                        <button type="submit" class="btn btn-pink">Đặt hàng</button>
                     </form>
                 </div>
             </div>
@@ -57,32 +57,19 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title mb-3">Order summary</h5>
-
-                    @foreach (var item in Model.lst)
-                    {
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>@item.vTenSP x @item.vSoLuong</span>
-                            <span>@(item.vGiaBan * item.vSoLuong).ToString("N0") đ</span>
-                        </div>
-                    }
-
                     <hr />
-
                     <div class="d-flex justify-content-between mb-2">
                         <span>Subtotal</span>
                         <span>@Model.TongThanhTien().ToString("N0") đ</span>
                     </div>
-
                     <div class="d-flex justify-content-between mb-2">
                         <span>Discount</span>
                         <span>-0 đ</span>
                     </div>
-
                     <div class="d-flex justify-content-between mb-3">
                         <span>Delivery fee</span>
                         <span>0 đ</span>
                     </div>
-
                     <div class="d-flex justify-content-between fw-bold">
                         <span>Total</span>
                         <span>@Model.TongThanhTien().ToString("N0") đ</span>
@@ -93,4 +80,84 @@
     </div>
 </div>
 
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('checkoutForm');
 
+            // Tên key LocalStorage, kết hợp với username để lưu riêng cho từng user
+            const username = '@username';
+            const storageKey = `khachHangInfo_${username}`;
+
+            // Load dữ liệu đã lưu (nếu có) và điền vào form
+            const savedInfo = JSON.parse(localStorage.getItem(storageKey) || '{}');
+            if (savedInfo.HoTen) document.getElementById('HoTen').value = savedInfo.HoTen;
+            if (savedInfo.Email) document.getElementById('Email').value = savedInfo.Email;
+            if (savedInfo.DienThoai) document.getElementById('DienThoai').value = savedInfo.DienThoai;
+            if (savedInfo.DiaChi) document.getElementById('DiaChi').value = savedInfo.DiaChi;
+
+            // Khi submit, lưu lại thông tin vào LocalStorage riêng cho user
+            form.addEventListener('submit', function () {
+                const khachHangInfo = {
+                    HoTen: document.getElementById('HoTen').value,
+                    Email: document.getElementById('Email').value,
+                    DienThoai: document.getElementById('DienThoai').value,
+                    DiaChi: document.getElementById('DiaChi').value
+                };
+                localStorage.setItem(storageKey, JSON.stringify(khachHangInfo));
+                console.log("Đã lưu thông tin khách hàng cho user:", username, khachHangInfo);
+            });
+        });
+    </script>
+}
+<style>
+    .btn-pink {
+        background-color: #e797b0;
+        color: white !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+    }
+
+        .btn-pink:hover {
+            background-color: #a0181c;
+            border-color: #a0181c;
+        }
+
+    .btn-pink-outline {
+        background-color: white;
+        color: #e797b0 !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+        text-decoration: none; /* bỏ gạch chân */
+    }
+
+        .btn-pink-outline:hover {
+            background-color: #e797b0;
+            color: white !important;
+            text-decoration: none; /* bỏ gạch chân khi hover */
+        }
+
+    .btn-custom {
+        background-color: #8ca0c4; /* màu nền xanh nhạt */
+        color: white; /* chữ màu trắng */
+        border: 2px solid #d35a5a; /* viền đỏ */
+        border-radius: 6px; /* bo góc */
+        font-weight: 600; /* chữ đậm vừa phải */
+        padding: 8px 20px; /* khoảng cách trên dưới và trái phải */
+        text-decoration: none; /* bỏ gạch chân */
+        display: inline-block;
+        transition: 0.3s;
+    }
+
+        .btn-custom:hover {
+            background-color: #7b90b8; /* màu nền tối hơn khi hover */
+            border-color: #a0181c; /* viền đỏ đậm hơn */
+            color: white;
+        }
+</style>

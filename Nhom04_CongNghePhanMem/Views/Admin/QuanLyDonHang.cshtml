@@ -1,0 +1,165 @@
+﻿@using Nhom04_CongNghePhanMem.Models
+@model IEnumerable<DONHANG>
+
+@{
+    ViewBag.Title = "Quản lý đơn hàng";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<style>
+    .order-wrapper {
+        background: #fdf5e9;
+        border-radius: 12px;
+        padding: 20px 25px 25px;
+        margin-top: 15px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .order-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #a0181c;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    .order-filter {
+        margin-bottom: 15px;
+        padding: 12px 15px;
+        background: #fff;
+        border-radius: 10px;
+        border: 1px solid #f0d7c0;
+    }
+
+        .order-filter label {
+            font-weight: 600;
+            color: #a0181c;
+        }
+
+    .order-table thead tr {
+        background: #d78787;
+        color: #fff;
+    }
+
+    .order-table thead th {
+        border-color: #d78787 !important;
+    }
+
+    .order-table tbody tr:hover {
+        background: #fff5ef;
+    }
+
+
+    /* FULL HỒNG */
+    .btn-pink {
+        background-color: #e797b0;
+        color: white !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+    }
+
+        .btn-pink:hover {
+            background-color: #a0181c;
+            border-color: #a0181c;
+        }
+
+    /* OUTLINE HỒNG */
+
+    .btn-pink-outline {
+        background-color: white;
+        color: #e797b0 !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 5px;
+        border-radius: 8px;
+        transition: 0.25s;
+        text-decoration: none; /* bỏ gạch chân */
+    }
+
+        .btn-pink-outline:hover {
+            background-color: #e797b0;
+            color: white !important;
+            text-decoration: none; /* bỏ gạch chân khi hover */
+        }
+
+
+    .tag-success {
+        color: #4CAF50;
+        font-weight: bold;
+    }
+
+</style>
+
+<div class="container-fluid mt-4">
+    <div class="row">
+
+
+        <div class="col-md-3">
+            @{ Html.RenderPartial("~/Views/Admin/Sidebar.cshtml"); }
+        </div>
+
+        <div class="col-md-9">
+
+            <div class="order-wrapper">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2 class="order-title">Quản lý đơn hàng</h2>
+                    </div>
+                </div>
+
+                @using (Html.BeginForm("QuanLyDonHang", "Admin", FormMethod.Get))
+                {<div class="row" style="margin-bottom:15px">
+                        <div class="col-md-3" style="margin-left:20px"> <input type="text" name="maDon" class="form-control" value="@Request["maDon"]" placeholder="Nhập mã đơn cần tìm" /> </div> <div class="col-md-6 d-flex" style="margin-left:250px">
+                            <select name="trangThai" class="form-control">
+                                <option value="">-- Tất cả trạng thái đơn hàng --</option> @{ var tt = Request["trangThai"]; string[] listTT = new string[] { "CHỜ XÁC NHẬN", "ĐÃ XÁC NHẬN", "ĐANG GIAO HÀNG", "ĐÃ GIAO HÀNG", "ĐÃ HỦY", "HOÀN HÀNG" }; foreach (var item in listTT)
+                                    {
+                                        <option value="@item" @(tt == item ? "selected" : "")>@item</option>
+                                    } }
+                            </select> <button type="submit" class="btn-pink" style="margin-left:10px">Lọc</button> @Html.ActionLink("Quay lại", "QuanLyDonHang", null, new { @class = "btn-pink-outline", style = "margin-left:5px;width:160px;height:40px" })
+                        </div>
+                    </div>}
+
+                <table class="table table-bordered table-striped order-table">
+                    <thead>
+                        <tr>
+                            <th style="width:120px">Mã đơn</th>
+                            <th>Khách hàng</th>
+                            <th style="width:130px">Ngày đặt</th>
+                            <th style="width:160px">Trạng thái</th>
+                            <th style="width:150px">Tổng tiền</th>
+                            <th style="width:90px"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var dh in Model)
+                        {
+                            <tr>
+                                <td>@(string.IsNullOrEmpty(dh.MADH_MAHOA) ? dh.MADH.ToString() : dh.MADH_MAHOA)</td>
+                                <td>@(dh.KHACHHANG != null ? dh.KHACHHANG.HOTENKH : "")</td>
+                                <td>@dh.NGAYDAT.ToString("dd/MM/yyyy")</td>
+                                <td>@dh.TRANGTHAI</td>
+                                <td>@String.Format("{0:N0} VNĐ", dh.TONGTIEN)</td>
+                                <td class="text-center">
+                                    @Html.ActionLink(
+                                        "Chi tiết",
+                                        "ChiTietDonHangAdmin",
+                                        "Admin",
+                                        new { id = dh.MADH },
+                                        new { @class = "btn-pink-outline" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,257 @@
+﻿@using Nhom04_CongNghePhanMem.Models
+@model ThongKe_Admin
+
+@{
+    ViewBag.Title = "Báo cáo thống kê";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<style>
+    .tk-wrapper {
+        background: #fdf5e9;
+        border-radius: 12px;
+        padding: 20px 25px 25px;
+        margin-top: 15px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .tk-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #a0181c;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+    }
+
+    .tk-sub-title {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    .tk-card h3 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .tk-card .panel-heading {
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .tk-card .panel-body {
+        text-align: center;
+        padding: 15px 10px;
+    }
+
+    .tk-list li {
+        margin-bottom: 5px;
+    }
+
+    .btn-pink {
+        background-color: #e797b0;
+        color: white !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+    }
+
+        .btn-pink:hover {
+            background-color: #a0181c;
+            border-color: #a0181c;
+        }
+</style>
+
+<div class="container-fluid mt-4">
+    <div class="row">
+
+
+        <div class="col-md-3">
+            @{ Html.RenderPartial("~/Views/Admin/Sidebar.cshtml"); }
+        </div>
+
+        <div class="col-md-9">
+            <div class="tk-wrapper">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="tk-title">BÁO CÁO – THỐNG KÊ</div>
+                        <div class="tk-sub-title">
+                            Từ ngày <b>@Model.TuNgay.ToString("dd/MM/yyyy")</b>
+                            đến <b>@Model.DenNgay.ToString("dd/MM/yyyy")</b>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-right">
+                        @using (Html.BeginForm("BaoCaoThongKe", "Admin", FormMethod.Get, new { @class = "form-inline" }))
+                        {
+                            <div class="form-group" style="margin-right:5px">
+                                <label style="font-size:12px; display:block;">Từ ngày</label>
+                                <input type="date" name="tuNgay" class="form-control input-sm"
+                                       value="@Model.TuNgay.ToString("yyyy-MM-dd")"
+                                       max="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                            </div>
+
+                            <div class="form-group" style="margin-right:5px">
+                                <label style="font-size:12px; display:block;">Đến ngày</label>
+                                <input type="date" name="denNgay" class="form-control input-sm"
+                                       value="@Model.DenNgay.ToString("yyyy-MM-dd")"
+                                       max="@DateTime.Today.ToString("yyyy-MM-dd")" />
+
+                            </div>
+                            <button type="submit" class="btn-pink" style="margin-top:18px">
+                                Xem báo cáo
+                            </button>
+                        }
+                    </div>
+                </div>
+
+                <hr />
+
+                <!-- 4 ô tổng quan -->
+                <div class="row" style="margin-bottom:15px">
+                    <div class="col-md-3 tk-card">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Tổng đơn hàng</div>
+                            <div class="panel-body">
+                                <h3>@Model.TongDonHang</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 tk-card">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">Tổng doanh thu</div>
+                            <div class="panel-body">
+                                <h3>@String.Format("{0:N0}", Model.TongDoanhThu) <span style="font-size:13px">VNĐ</span></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 tk-card">
+                        <div class="panel panel-warning">
+                            <div class="panel-heading">Đơn đang giao</div>
+                            <div class="panel-body">
+                                <h3>@Model.DonHangDangGiao</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 tk-card">
+                        <div class="panel panel-danger">
+                            <div class="panel-heading">Đơn đã hủy / hoàn</div>
+                            <div class="panel-body">
+                                <h3>@Model.DonHangDaHuy</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chi tiết số lượng đơn -->
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-md-6">
+                        <h4><b>Chi tiết số lượng đơn</b></h4>
+                        <ul class="tk-list">
+                            <li>Đơn chờ xác nhận: <b>@Model.DonHangChoXacNhan</b></li>
+                            <li>Đơn đang giao hàng: <b>@Model.DonHangDangGiao</b></li>
+                            <li>Đơn đã giao hàng: <b>@Model.DonHangDaGiao</b></li>
+                            <li>Đơn đã hủy / hoàn hàng: <b>@Model.DonHangDaHuy</b></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Top sản phẩm -->
+                <h4><b>Top 10 sản phẩm bán chạy</b></h4>
+
+                <table class="table table-bordered table-striped table-hover">
+                    <thead style="background-color: #d78787">
+                        <tr class="info">
+                            <th style="width:50px; text-align:center">#</th>
+                            <th>Tên sản phẩm</th>
+                            <th style="width:150px; text-align:center">Tổng số lượng bán</th>
+                            <th style="width:200px; text-align:right">Tổng doanh thu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int stt = 1;
+                        }
+                        @if (Model.TopSanPhamBanChay != null && Model.TopSanPhamBanChay.Any())
+                        {
+                            foreach (var sp in Model.TopSanPhamBanChay)
+                            {
+                                <tr>
+                                    <td style="text-align:center">@stt</td>
+                                    <td>@sp.TenSanPham</td>
+                                    <td style="text-align:center">@sp.TongSoLuongBan</td>
+                                    <td style="text-align:right">@String.Format("{0:N0} VNĐ", sp.TongDoanhThu)</td>
+                                </tr>
+                                stt++;
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="4" class="text-center">
+                                    Không có dữ liệu trong khoảng thời gian này.
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .btn-pink {
+        background-color: #e797b0;
+        color: white !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+    }
+
+        .btn-pink:hover {
+            background-color: #a0181c;
+            border-color: #a0181c;
+        }
+
+    .btn-pink-outline {
+        background-color: white;
+        color: #e797b0 !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+        text-decoration: none; /* bỏ gạch chân */
+    }
+
+        .btn-pink-outline:hover {
+            background-color: #e797b0;
+            color: white !important;
+            text-decoration: none; /* bỏ gạch chân khi hover */
+        }
+
+    .btn-custom {
+        background-color: #8ca0c4; /* màu nền xanh nhạt */
+        color: white; /* chữ màu trắng */
+        border: 2px solid #d35a5a; /* viền đỏ */
+        border-radius: 6px; /* bo góc */
+        font-weight: 600; /* chữ đậm vừa phải */
+        padding: 8px 20px; /* khoảng cách trên dưới và trái phải */
+        text-decoration: none; /* bỏ gạch chân */
+        display: inline-block;
+        transition: 0.3s;
+    }
+
+        .btn-custom:hover {
+            background-color: #7b90b8; /* màu nền tối hơn khi hover */
+            border-color: #a0181c; /* viền đỏ đậm hơn */
+            color: white;
+        }
+</style>

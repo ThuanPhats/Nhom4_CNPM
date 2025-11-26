@@ -1,0 +1,237 @@
+﻿@using Nhom04_CongNghePhanMem.Models
+@model SANPHAM
+
+@{
+    ViewBag.Title = "Thêm sản phẩm";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<style>
+    .sp-wrapper {
+        background: #fdf5e9;
+        border-radius: 12px;
+        padding: 25px 35px 30px;
+        margin-top: 15px;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    .dm-wrapper {
+        background: #fdf5e9;
+        border-radius: 12px;
+        padding: 5px;
+        margin-top: 10px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .dm-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #a0181c;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    .dm-table thead tr {
+        background: #d78787; /* Màu giống hình */
+        color: white;
+    }
+
+    .dm-table thead th {
+        border-color: #c06f6f !important; /* Viền đậm hơn chút cho đẹp */
+    }
+
+    .table-header-custom {
+        background: #d78787;
+        color: white;
+        padding: 12px 18px;
+        font-size: 20px;
+        border-radius: 10px 10px 0 0;
+        font-weight: 700;
+    }
+
+
+    .dm-table tbody tr:hover {
+        background: #fff1f6;
+    }
+
+    .dm-wrapper .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* FULL HỒNG */
+    .btn-pink {
+        background-color: #e797b0;
+        color: white !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+    }
+
+        .btn-pink:hover {
+            background-color: #a0181c;
+            border-color: #a0181c;
+        }
+
+    /* OUTLINE HỒNG */
+   
+    .btn-pink-outline {
+        background-color: white;
+        color: #e797b0 !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+        text-decoration: none; /* bỏ gạch chân */
+    }
+
+        .btn-pink-outline:hover {
+            background-color: #e797b0;
+            color: white !important;
+            text-decoration: none; /* bỏ gạch chân khi hover */
+        }
+
+
+    .tag-success {
+        color: #4CAF50;
+        font-weight: bold;
+    }
+    .sp-actions {
+        margin-top: 15px;
+        display: flex; /* sắp xếp theo hàng */
+        gap: 10px; /* khoảng cách giữa các nút */
+        justify-content: flex-end; /* căn sang trái */
+    }
+
+</style>
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-md-3">
+            @{ Html.RenderPartial("~/Views/Admin/Sidebar.cshtml"); }
+        </div>
+
+        <div class="col-md-9">
+            <div class="sp-wrapper">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2 class="sp-title">Thêm sản phẩm</h2>
+                    </div>
+                </div>
+
+                @using (Html.BeginForm("ThemSanPham", "Admin", FormMethod.Post,
+                                      new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <label class="sp-label">Tên sản phẩm</label>
+                                @Html.TextBoxFor(m => m.TENSP, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.TENSP, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <label class="sp-label">Giá bán (VNĐ)</label>
+                                @Html.TextBoxFor(m => m.GIABAN, new
+                                {
+                                    @class = "form-control",
+                                    type = "number",
+                                    min = "0",
+                                    step = "1000"
+                                })
+                                @Html.ValidationMessageFor(m => m.GIABAN, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <label class="sp-label">Số lượng tồn</label>
+                                @Html.TextBoxFor(m => m.SOLUONGTON, new
+                                {
+                                    @class = "form-control",
+                                    type = "number",
+                                    min = "0"
+                                })
+                                @Html.ValidationMessageFor(m => m.SOLUONGTON, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="sp-label">Màu sắc</label>
+                                        @Html.TextBoxFor(m => m.MAUSAC, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="sp-label">Kích thước</label>
+                                        @Html.TextBoxFor(m => m.KICHTHUOC,
+                                            new { @class = "form-control", placeholder = "S, M, L, XL..." })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="sp-label">Phân loại (Nam / Nữ / Couple...)</label>
+                                @Html.TextBoxFor(m => m.PHANLOAI, new { @class = "form-control" })
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label class="sp-label">Ảnh sản phẩm</label>
+                                <input type="file" name="fileAnh" class="form-control" />
+                                @if (!string.IsNullOrEmpty(Model?.HINHANH))
+                                {
+                                    <div style="margin-top:10px">
+                                        <span>Ảnh hiện tại:</span><br />
+                                        <img src="~/Content/Images/@Model.HINHANH"
+                                             style="width:120px;height:auto;border-radius:4px" />
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="form-group">
+                                <label class="sp-label">Danh mục</label>
+                                @Html.DropDownList(
+                                    "MALOAI",
+                                    (SelectList)ViewBag.MALOAI,
+                                    "--- Chọn danh mục ---",
+                                    new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group">
+                                <label class="sp-label">Nhà cung cấp</label>
+                                @Html.DropDownList(
+                                    "MANCC",
+                                    (SelectList)ViewBag.MANCC,
+                                    "--- Chọn nhà cung cấp ---",
+                                    new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group">
+                                <label class="sp-label">Mô tả</label>
+                                @Html.TextAreaFor(m => m.MOTA, 4, 50, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sp-actions">
+                        <button type="submit" class="btn-pink">Lưu</button>
+                        @Html.ActionLink("Quay lại", "QuanLySanPham", null,
+                            new { @class = "btn-pink-outline" })
+                    </div>
+
+                }
+            </div>
+
+        </div>
+    </div>
+</div>

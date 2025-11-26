@@ -4,34 +4,105 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<div class="container py-4">
-    <h3>Danh sách đơn hàng</h3>
+<div class="container my-5">
+    <div class="card shadow p-4 p-md-5 rounded">
+        <h2 class="text-secondary mb-3">Tài khoản của tôi</h2>
+        <p class="text-muted mb-4">Quản lý thông tin cá nhân và đơn hàng</p>
 
-    <table class="table table-bordered mt-3">
-        <thead class="table-light">
-            <tr>
-                <th>#</th>
-                <th>Mã đơn hàng</th>
-                <th>Ngày đặt</th>
-                <th>Tổng tiền</th>
-                <th>Trạng thái</th>
-                <th>Hành động</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (int i = 0; i < Model.Count; i++)
-            {
-                <tr>
-                    <td>@(i+1)</td>
-                    <td>@Model[i].MADH</td>
-                    <td>@Model[i].NGAYDAT.ToString("dd/MM/yyyy")</td>
-                    <td>@Model[i].TONGTIEN.ToString("N0") đ</td>
-                    <td>@Model[i].TRANGTHAI</td>
-                    <td>
-                        <a class="btn btn-sm btn-info" href="@Url.Action("ChiTietDonHang", "Home", new { id = Model[i].MADH})">Chi tiết</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+        <!-- Tabs -->
+        <ul class="nav nav-pills mb-4">
+            <li class="nav-item">
+                <a class="nav-link " href="@Url.Action("QuanLy", "Home")">
+                    <i class="fas fa-info-circle me-1"></i> Thông tin cá nhân
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active btn btn-primary btn-lg px-4 py-2 btn-hero" style="background: #e797b0" href="@Url.Action("DonHang", "Home")">
+                    <i class="fas fa-history me-1"></i> Lịch sử đơn hàng
+                </a>
+            </li>
+        </ul>
+
+        <div class="container py-4">
+            <h3>Danh sách đơn hàng</h3>
+
+            <table class="table table-bordered mt-3">
+                <thead class="table-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Mã đơn hàng</th>
+                        <th>Ngày đặt</th>
+                        <th>Tổng tiền</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td>@(i+1)</td>
+                            <td>@Model[i].MADH</td>
+                            <td>@Model[i].NGAYDAT.ToString("dd/MM/yyyy")</td>
+                            <td>@Model[i].TONGTIEN.ToString("N0") đ</td>
+                            <td>@Model[i].TRANGTHAI</td>
+                            <td>
+                                <a class="btn-pink-outline btn-lg px-4 py-2 btn-hero"  href="@Url.Action("ChiTietDonHang", "Home", new { id = Model[i].MADH})">Chi tiết</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+<style>
+    .btn-pink {
+        background-color: #e797b0;
+        color: white !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+    }
+
+        .btn-pink:hover {
+            background-color: #a0181c;
+            border-color: #a0181c;
+        }
+
+    .btn-pink-outline {
+        background-color: white;
+        color: #e797b0 !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+        text-decoration: none; /* bỏ gạch chân */
+    }
+
+        .btn-pink-outline:hover {
+            background-color: #e797b0;
+            color: white !important;
+            text-decoration: none; /* bỏ gạch chân khi hover */
+        }
+    .btn-custom {
+        background-color: #8ca0c4; /* màu nền xanh nhạt */
+        color: white; /* chữ màu trắng */
+        border: 2px solid #d35a5a; /* viền đỏ */
+        border-radius: 6px; /* bo góc */
+        font-weight: 600; /* chữ đậm vừa phải */
+        padding: 8px 20px; /* khoảng cách trên dưới và trái phải */
+        text-decoration: none; /* bỏ gạch chân */
+        display: inline-block;
+        transition: 0.3s;
+    }
+
+        .btn-custom:hover {
+            background-color: #7b90b8; /* màu nền tối hơn khi hover */
+            border-color: #a0181c; /* viền đỏ đậm hơn */
+            color: white;
+        }
+</style>

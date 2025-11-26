@@ -1,4 +1,10 @@
-﻿<div class="container py-4">
+﻿
+@{
+    ViewBag.Title = "ChiTietDonHang";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="container py-4">
 
     <!-- Thông tin đơn hàng -->
     <div class="card mb-4 shadow-sm">
@@ -20,48 +26,131 @@
                 </form>
             }
 
+
         </div>
 
-    <!-- Danh sách sản phẩm -->
-    <div class="card shadow-sm mb-3">
-        <div class="card-header bg-danger text-white">
-            <h5 class="mb-0">Danh sách sản phẩm</h5>
-        </div>
-        <div class="card-body p-0">
-            <table class="table table-hover mb-0">
-                <thead class="table-light">
-                    <tr>
-                        <th>Sản phẩm</th>
-                        <th>Số lượng</th>
-                        <th>Đơn giá</th>
-                        <th>Thành tiền</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var ct in ViewBag.ChiTietDonHang)
-                    {
+        <!-- Danh sách sản phẩm -->
+        <div class="card shadow-sm mb-3">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0">Danh sách sản phẩm</h5>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light" >
                         <tr>
-                            <td class="align-middle">
-                                <div class="d-flex align-items-center">
-                                    <img src="@Url.Content("~/Content/Images/")@ct.SANPHAM.HINHANH" alt="@ct.SANPHAM.TENSP" class="rounded me-2" style="width:50px; height:50px; object-fit:cover;" />
-                                    <span>@ct.SANPHAM.TENSP</span>
-                                </div>
-                            </td>
-                            <td class="align-middle">@ct.SOLUONG</td>
-                            <td class="align-middle">@ct.DONGIA.ToString("N0") đ</td>
-                            <td class="align-middle text-success fw-bold">@(ct.SOLUONG * ct.DONGIA).ToString("N0") đ</td>
+                            <th>Sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Đơn giá</th>
+                            <th>Thành tiền</th>
+                            <th> Đánh giá </th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var ct in ViewBag.ChiTietDonHang)
+                        {
+                            <tr>
+                                <td class="align-middle">
+                                    <div class="d-flex align-items-center">
+                                        <img src="@Url.Content("~/Content/Images/")@ct.SANPHAM.HINHANH" alt="@ct.SANPHAM.TENSP" class="rounded me-2" style="width:50px; height:50px; object-fit:cover;" />
+                                        <span>@ct.SANPHAM.TENSP</span>
+                                    </div>
+                                </td>
+                                <td class="align-middle">@ct.SOLUONG</td>
+                                <td class="align-middle">@ct.DONGIA.ToString("N0") đ</td>
+                                <td class="align-middle text-success fw-bold">@(ct.SOLUONG * ct.DONGIA) đ</td>
+                                <td class="align-middle text-center">
+                                    @if (Model.TRANGTHAI == "ĐÃ GIAO HÀNG")
+                                    {
+                                        bool daDanhGia = ViewBag.DaDanhGia != null && ((List<int>)ViewBag.DaDanhGia).Contains(ct.MASP);
+
+                                        if (daDanhGia)
+                                        {
+                                            <!-- Nút màu xám, disabled -->
+                                            <button class="btn btn-secondary btn-sm" disabled style="cursor: not-allowed;">
+                                                Đã đánh giá
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <!-- Nút màu vàng, có thể click -->
+                                            <a href="@Url.Action("DanhGia", "Home", new { masp = ct.MASP, madh = Model.MADH })"
+                                               class="btn-pink">
+                                                Đánh giá
+                                            </a>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted fst-italic">Chưa giao</span>
+                                    }
+                                </td>
+
+
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Nút quay về trang chủ -->
+        <div class="text-center mt-3">
+            <a href="@Url.Action("Index", "Home")" class="btn-custom">
+                ← Quay về trang chủ
+            </a>
         </div>
     </div>
+</div>
 
-    <!-- Nút quay về trang chủ -->
-    <div class="text-center mt-3">
-        <a href="@Url.Action("Index", "Home")" class="btn btn-outline-primary btn-lg">
-            ← Quay về trang chủ
-        </a>
-    </div>
-</div>
-</div>
+<style>
+    .btn-pink {
+        background-color: #e797b0;
+        color: white !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+    }
+
+        .btn-pink:hover {
+            background-color: #a0181c;
+            border-color: #a0181c;
+        }
+
+    .btn-pink-outline {
+        background-color: white;
+        color: #e797b0 !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+        text-decoration: none; /* bỏ gạch chân */
+    }
+
+        .btn-pink-outline:hover {
+            background-color: #e797b0;
+            color: white !important;
+            text-decoration: none; /* bỏ gạch chân khi hover */
+        }
+
+    .btn-custom {
+        background-color: #8ca0c4; /* màu nền xanh nhạt */
+        color: white; /* chữ màu trắng */
+        border: 2px solid #d35a5a; /* viền đỏ */
+        border-radius: 6px; /* bo góc */
+        font-weight: 600; /* chữ đậm vừa phải */
+        padding: 8px 20px; /* khoảng cách trên dưới và trái phải */
+        text-decoration: none; /* bỏ gạch chân */
+        display: inline-block;
+        transition: 0.3s;
+    }
+
+        .btn-custom:hover {
+            background-color: #7b90b8; /* màu nền tối hơn khi hover */
+            border-color: #a0181c; /* viền đỏ đậm hơn */
+            color: white;
+        }
+</style>

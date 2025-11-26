@@ -1,0 +1,176 @@
+﻿@using Nhom04_CongNghePhanMem.Models
+@model IEnumerable<YEUCAUHOTRO>
+
+@{
+    ViewBag.Title = "Quản lý yêu cầu hỗ trợ";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<style>
+    .dm-wrapper {
+        background: #fdf5e9;
+        border-radius: 12px;
+        padding:5px;
+        margin-top:10px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .dm-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #a0181c;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    .dm-table thead tr {
+        background: #d78787; /* Màu giống hình */
+        color: white;
+    }
+
+    .dm-table thead th {
+        border-color: #c06f6f !important; /* Viền đậm hơn chút cho đẹp */
+    }
+    .table-header-custom {
+        background: #d78787;
+        color: white;
+        padding: 12px 18px;
+        font-size: 20px;
+        border-radius: 10px 10px 0 0;
+        font-weight: 700;
+    }
+
+
+    .dm-table tbody tr:hover {
+        background: #fff1f6;
+    }
+ 
+    .dm-wrapper .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* FULL HỒNG */
+    .btn-pink {
+        background-color: #e797b0;
+        color: white !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+    }
+
+        .btn-pink:hover {
+            background-color: #a0181c;
+            border-color: #a0181c;
+        }
+
+    /* OUTLINE HỒNG */
+    /* OUTLINE HỒNG */
+    .btn-pink-outline {
+        background-color: white;
+        color: #e797b0 !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+        text-decoration: none; /* bỏ gạch chân */
+    }
+
+        .btn-pink-outline:hover {
+            background-color: #e797b0;
+            color: white !important;
+            text-decoration: none; /* bỏ gạch chân khi hover */
+        }
+
+
+    .tag-success {
+        color: #4CAF50;
+        font-weight: bold;
+    }
+</style>
+
+<div class="container-fluid ">
+    <div class="row g-0">
+        <div class="col-md-3">
+            @{ Html.RenderPartial("~/Views/Admin/Sidebar.cshtml"); }
+        </div>
+
+        <div class="col-md-9">
+            <div class="dm-wrapper">
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        
+                            <h2 class="dm-title">Quản lý yêu cầu hỗ trợ</h2>
+
+                    </div>
+                </div>
+
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success">@TempData["Success"]</div>
+                }
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger">@TempData["Error"]</div>
+                }
+
+                <table class="table table-bordered table-striped dm-table">
+                    <thead>
+                        <tr>
+                            <th>Mã YC</th>
+                            <th>Mã hóa</th>
+                            <th>Ngày gửi</th>
+                            <th>Nội dung</th>
+                            <th>Trạng thái</th>
+                            <th>Phản hồi</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var yc in Model)
+                        {
+                            <tr>
+                                <td>@yc.MAYC</td>
+                                <td>@yc.MAYC_MAHOA</td>
+                                <td>@yc.NGAYGUI.Value.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td>@yc.NOIDUNG</td>
+                                <td>@yc.TRANGTHAI</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(yc.PHANHOI))
+                                    {
+                                        <span>@yc.PHANHOI</span>
+                                    }
+                                    else
+                                    {
+                                        <em>Chưa có phản hồi</em>
+                                    }
+                                </td>
+                                <td>
+                                    @if (yc.TRANGTHAI != "Đã xử lý")
+                                    {
+                                        using (Html.BeginForm("TraLoiHotro", "Admin", FormMethod.Post, new { @class = "form-inline", style = "display:flex; gap:5px;" }))
+                                        {
+                                            <input type="hidden" name="idYC" value="@yc.MAYC" />
+                                            <input type="text" name="phanHoi" class="form-control form-control-sm" placeholder="Nhập phản hồi..." required />
+
+                                            <!-- NÚT GỬI OUTLINE HỒNG -->
+                                            <button type="submit" class="btn-pink-outline">Gửi</button>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span class="tag-success">Đã xử lý ✔</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

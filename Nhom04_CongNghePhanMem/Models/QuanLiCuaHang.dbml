@@ -10,17 +10,6 @@
       <Association Name="NHANVIEN_CALAM" Member="NHANVIEN" ThisKey="MANV" OtherKey="MANV" Type="NHANVIEN" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.YEUCAUHOTRO" Member="YEUCAUHOTROs">
-    <Type Name="YEUCAUHOTRO">
-      <Column Name="MAYC" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="MAYC_MAHOA" Type="System.String" DbType="VarChar(5)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="NGAYGUI" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="NOIDUNG" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
-      <Column Name="TRANGTHAI" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="MAKH" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="KHACHHANG_YEUCAUHOTRO" Member="KHACHHANG" ThisKey="MAKH" OtherKey="MAKH" Type="KHACHHANG" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.CHITIETDONHANG" Member="CHITIETDONHANGs">
     <Type Name="CHITIETDONHANG">
       <Column Name="MACTDH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -78,12 +67,12 @@
       <Column Name="MAKH_MAHOA" Type="System.String" DbType="VarChar(5)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="HOTENKH" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="SDT_KH" Type="System.String" DbType="Char(11) NOT NULL" CanBeNull="false" />
-      <Column Name="DIACHI_KH" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="DIACHI_KH" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="EMAIL_KH" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="MATK" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="KHACHHANG_YEUCAUHOTRO" Member="YEUCAUHOTROs" ThisKey="MAKH" OtherKey="MAKH" Type="YEUCAUHOTRO" />
       <Association Name="KHACHHANG_DANHGIA" Member="DANHGIAs" ThisKey="MAKH" OtherKey="MAKH" Type="DANHGIA" />
       <Association Name="KHACHHANG_DONHANG" Member="DONHANGs" ThisKey="MAKH" OtherKey="MAKH" Type="DONHANG" />
+      <Association Name="KHACHHANG_YEUCAUHOTRO" Member="YEUCAUHOTROs" ThisKey="MAKH" OtherKey="MAKH" Type="YEUCAUHOTRO" />
       <Association Name="TAIKHOAN_KHACHHANG" Member="TAIKHOAN" ThisKey="MATK" OtherKey="MATK" Type="TAIKHOAN" IsForeignKey="true" />
     </Type>
   </Table>
@@ -173,6 +162,7 @@
       <Column Name="MALOAI" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MANCC" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PHANLOAI" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="SANPHAM_CHITIETDONHANG" Member="CHITIETDONHANGs" ThisKey="MASP" OtherKey="MASP" Type="CHITIETDONHANG" />
       <Association Name="SANPHAM_CHITIETPHIEUNHAP" Member="CHITIETPHIEUNHAPs" ThisKey="MASP" OtherKey="MASP" Type="CHITIETPHIEUNHAP" />
       <Association Name="SANPHAM_DANHGIA" Member="DANHGIAs" ThisKey="MASP" OtherKey="MASP" Type="DANHGIA" />
@@ -180,6 +170,26 @@
       <Association Name="NHACUNGCAP_SANPHAM" Member="NHACUNGCAP" ThisKey="MANCC" OtherKey="MANCC" Type="NHACUNGCAP" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.YEUCAUHOTRO" Member="YEUCAUHOTROs">
+    <Type Name="YEUCAUHOTRO">
+      <Column Name="MAYC" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MAYC_MAHOA" Type="System.String" DbType="VarChar(5)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NGAYGUI" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NOIDUNG" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="TRANGTHAI" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MAKH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PHANHOI" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="KHACHHANG_YEUCAUHOTRO" Member="KHACHHANG" ThisKey="MAKH" OtherKey="MAKH" Type="KHACHHANG" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.FN_TINHLOINHUAN" Method="FN_TINHLOINHUAN" IsComposable="true">
+    <Parameter Name="MASP" Parameter="mASP" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="dbo.FN_TINHTONGTIENDONHANG" Method="FN_TINHTONGTIENDONHANG" IsComposable="true">
+    <Parameter Name="MADH" Parameter="mADH" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Decimal" />
+  </Function>
   <Function Name="dbo.SP_HOTRO_CHUAXULI" Method="SP_HOTRO_CHUAXULI">
     <ElementType Name="SP_HOTRO_CHUAXULIResult">
       <Column Name="MAYC_MAHOA" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
@@ -200,13 +210,5 @@
     <Parameter Name="MAYC_MAHOA" Parameter="mAYC_MAHOA" Type="System.String" DbType="VarChar(10)" />
     <Parameter Name="TRANGTHAIMOI" Parameter="tRANGTHAIMOI" Type="System.String" DbType="NVarChar(50)" />
     <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.FN_TINHLOINHUAN" Method="FN_TINHLOINHUAN" IsComposable="true">
-    <Parameter Name="MASP" Parameter="mASP" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Decimal" />
-  </Function>
-  <Function Name="dbo.FN_TINHTONGTIENDONHANG" Method="FN_TINHTONGTIENDONHANG" IsComposable="true">
-    <Parameter Name="MADH" Parameter="mADH" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Decimal" />
   </Function>
 </Database>

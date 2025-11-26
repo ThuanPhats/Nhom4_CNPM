@@ -105,10 +105,44 @@
     <hr>
 
     <!-- CALL TO ACTION -->
-    <section class="py-5 bg-danger text-white text-center">
+    <section class="py-5  text-white text-center" style="background-color: #e797b0">
         <h2 class="fw-bold mb-3">Sẵn sàng khám phá bộ sưu tập của chúng tôi?</h2>
         <p class="mb-4">Hãy để NUPAKACHI đồng hành cùng bạn trong hành trình tìm kiếm phong cách riêng</p>
-        <a href="@Url.Action("SanPham", "Home")" class="btn btn-light btn-lg">Mua Ngay</a>
+        <a href="@Url.Action("SanPham", "Home")" class="btn-pink-outline">Mua Ngay</a>
     </section>
 
 </div>
+<style>
+    .btn-pink {
+        background-color: #e797b0;
+        color: white !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+    }
+
+        .btn-pink:hover {
+            background-color: #a0181c;
+            border-color: #a0181c;
+        }
+
+    .btn-pink-outline {
+        background-color: white;
+        color: #e797b0 !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+        text-decoration: none; /* bỏ gạch chân */
+    }
+
+        .btn-pink-outline:hover {
+            background-color: #e797b0;
+            color: white !important;
+            text-decoration: none; /* bỏ gạch chân khi hover */
+        }
+  
+</style>

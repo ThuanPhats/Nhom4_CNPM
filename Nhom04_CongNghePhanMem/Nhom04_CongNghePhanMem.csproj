@@ -128,6 +128,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\ChiTietKH_Admin.cs" />
+    <Compile Include="Models\DonHang_Admin.cs" />
     <Compile Include="Models\GioHangSanPham.cs" />
     <Compile Include="Models\QuanLiCuaHang.designer.cs">
       <AutoGen>True</AutoGen>
@@ -135,6 +137,8 @@
       <DependentUpon>QuanLiCuaHang.dbml</DependentUpon>
     </Compile>
     <Compile Include="Models\Register.cs" />
+    <Compile Include="Models\ThongKe_Admin.cs" />
+    <Compile Include="Models\TopSanPham.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -204,13 +208,16 @@
     <Content Include="Content\Images\anh9.jpg" />
     <Content Include="Content\Images\b1.png" />
     <Content Include="Content\Images\b2.jpg" />
+    <Content Include="Content\Images\icon2.png" />
     <Content Include="Content\Images\iconloaisp.jpg" />
+    <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\t2.jpg" />
     <Content Include="Content\Images\top1.jpg" />
     <Content Include="Content\JS\bootstrap.bundle.min.js" />
     <Content Include="Content\JS\fontawesome.min.js" />
     <Content Include="Content\JS\JavaScript.js" />
-    <Content Include="Content\JS\xemchitiet.js" />
+    <Content Include="Content\JS\JavaScrip_Local_Mess.js" />
+    <Content Include="Content\ThuocTinhChung.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -253,9 +260,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_UserLayout.cshtml" />
-    <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\HotProduct.cshtml" />
     <Content Include="Views\Home\NewProduct.cshtml" />
@@ -274,10 +279,22 @@
     <Content Include="Views\Home\QuanLy.cshtml" />
     <Content Include="Views\Home\DonHang.cshtml" />
     <Content Include="Views\Home\ChiTietDonHang.cshtml" />
+    <Content Include="Views\Home\DanhGia.cshtml" />
+    <Content Include="Views\Admin\QuanLySanPham.cshtml" />
+    <Content Include="Views\Admin\ThemSanPham.cshtml" />
+    <Content Include="Views\Admin\SuaSanPham.cshtml" />
+    <Content Include="Views\Admin\QuanLyKhachHang.cshtml" />
+    <Content Include="Views\Admin\ChiTietKhachHang.cshtml" />
+    <Content Include="Views\Admin\QuanLyDonHang.cshtml" />
+    <Content Include="Views\Admin\ChiTietDonHangAdmin.cshtml" />
+    <Content Include="Views\Admin\QuanLyDanhMuc.cshtml" />
+    <Content Include="Views\Admin\BaoCaoThongKe.cshtml" />
+    <Content Include="Views\Admin\QuanTriAdmin.cshtml" />
+    <Content Include="Views\Admin\Sidebar.cshtml" />
+    <Content Include="Views\Admin\YeuCauHotro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

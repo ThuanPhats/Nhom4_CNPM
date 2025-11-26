@@ -4,140 +4,15 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>NUPAKACHI_Shop thời trang cho mọi người</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="~/Content/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="~/Content/ThuocTinhChung.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="~/Content/Images/logo.png" />
 
 
-    <style>
-        .top {
-            position: sticky;
-            top: 0;
-            z-index: 999;
-        }
 
-        .top-header {
-            background: #7a0d0d;
-            padding: 15px 0;
-            color: #fff;
-        }
-
-        .search-box {
-            border-radius: 30px;
-            overflow: hidden;
-        }
-
-        .nav-menu a {
-            color: #333 !important;
-            margin-right: 25px;
-            font-size: 15px;
-        }
-
-        .icon-btn {
-            font-size: 28px;
-            cursor: pointer;
-        }
-
-        .cart-badge {
-            position: absolute;
-            top: -8px;
-            right: -10px;
-            font-size: 12px;
-        }
-        /* ===== NEW NAVBAR STYLE (MERGED) ===== */
-        .navbar {
-            border-bottom: 2px solid #f9cbd8;
-            box-shadow: 0 2px 8px rgba(233, 30, 99, 0.1);
-            transition: all 0.3s ease;
-        }
-
-            .navbar:hover {
-                background: linear-gradient(90deg, #ffe4ec 0%, #fff0f5 100%);
-            }
-
-        /* Logo trong thanh navbar */
-        .navbar-brand h2 {
-            color: #d61b5e;
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin: 0;
-            letter-spacing: 1px;
-            transition: transform 0.3s ease;
-        }
-
-            .navbar-brand h2:hover {
-                transform: scale(1.05);
-                color: #a50d3a;
-            }
-
-        /* === MENU ITEMS (APPLY EFFECT) === */
-        .navbar-nav .nav-link {
-            color: #7f1d1d !important;
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin: 0 10px;
-            position: relative;
-            transition: color 0.3s ease, transform 0.2s;
-        }
-
-            /* Hover màu + nhích lên */
-            .navbar-nav .nav-link:hover {
-                color: #d61b5e !important;
-                transform: translateY(-1px);
-            }
-
-            /* Underline effect */
-            .navbar-nav .nav-link::after {
-                content: "";
-                position: absolute;
-                left: 0;
-                bottom: -2px;
-                width: 0%;
-                height: 2px;
-                background: #d61b5e;
-                transition: width 0.3s ease;
-            }
-
-            .navbar-nav .nav-link:hover::after {
-                width: 100%;
-            }
-
-        /* Dropdown menu (mượt hơn) */
-        .dropdown-menu {
-            border-radius: 10px;
-            border: 1px solid #f3b6c8;
-            box-shadow: 0 5px 15px rgba(233,30,99,0.15);
-        }
-
-        .dropdown-item:hover {
-            background: #ffe4ec;
-            color: #d61b5e !important;
-        }
-
-
-        .hero-section {
-            background-image: url('../../content/images/1banner.jpeg');
-            background-position: center top;
-            background-repeat: no-repeat;
-            background-size: 100% auto; /* full chiều ngang, không bị crop */
-            background-color: #fff7f9;
-            width: 100%;
-            height: 90vh; /* có thể điều chỉnh 80-100vh tùy ảnh */
-            position: relative;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-        }
-    </style>
 </head>
 <body>
 
@@ -147,73 +22,71 @@
             <div class="container d-flex align-items-center justify-content-between">
 
                 <!-- Logo -->
-                <div class="d-flex align-items-center">
-                    <img src="https://cdn-icons-png.flaticon.com/512/720/720934.png"
-                         width="55" class="me-2">
-                    <h4 class="m-0">NUPAKACHI</h4>
+                <div class="d-flex align-items-center logo-shop">
+                    <a href="/Home/Index">
+                        <img src="~/Content/Images/logo.png" width="55" class="me-2" />
+                    </a>
+                    <h4 class="m-0 nameshop">NUPAKACHI</h4>
+
+
                 </div>
 
                 <!-- Search -->
                 <div class="mb-4">
-                    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
-                    {
-                        <div class="input-group search-box" style="width:500px">
-                            <span class="input-group-text bg-white border-0">☰</span>
-                            <input type="text" name="search" value="@ViewBag.Search" class="form-control border-0" placeholder="Nhập vào sản phẩm cần tìm">
-                            <button class="btn btn-danger" type="submit">🔍</button>
-                        </div>
-                    }
+                    <form method="post" action="@Url.Action("Search", "Home")" class="d-flex input-group search-box" style="width:500px">
+                        
+
+                        <span class="input-group-text bg-white border-0">☰</span>
+                        <input type="text" name="search" value="@ViewBag.Search" class="form-control border-0" placeholder="Nhập vào sản phẩm cần tìm">
+                        <button class="btn btn-danger" type="submit">🔍</button>
+                    </form>
                 </div>
+
 
                 <!-- Buttons + Icons -->
                 <div class="d-flex align-items-center gap-3">
 
-                    @if (Session["UserName"] == null)
+                    @{
+                        var userName = Session["UserName"] as string;
+                        var gh = Session["ghSP"] as Nhom04_CongNghePhanMem.Models.GioHangSanPham;
+                        int itemCount = (gh != null) ? gh.TongSoLuong() : 0;
+                    }
+
+                    @if (string.IsNullOrEmpty(userName))
                     {
                         <!-- Chưa đăng nhập -->
-                        <a class="btn btn-light" href="@Url.Action("DangNhap", "Account")">
-                            Sign in
-                        </a>
-                        <a class="btn btn-dark" href="@Url.Action("DangKy", "Account")">
-                            Register
-                        </a>
+                        <a class="btn btn-light btn-sm" href="@Url.Action("DangNhap", "Account")">Sign in</a>
+                        <a class="btn btn-dark btn-sm" href="@Url.Action("DangKy", "Account")">Register</a>
 
                         <!-- Wishlist icon -->
                         <span class="icon-btn">♡</span>
 
                         <!-- Cart icon -->
-                        <div class="position-relative icon-btn">
-                            <a href="/Home/GioHang"> 🛍</a>
-                            <span class="badge bg-danger cart-badge">0</span>
+                        <div class="position-relative d-inline-block">
+                            <a href="@Url.Action("GioHang", "Home")" class="text-white fs-4">🛍</a>
+                            <span class="badge bg-danger cart-badge">@itemCount</span>
                         </div>
                     }
                     else
                     {
                         <!-- Đã đăng nhập -->
-                        <span class="fw-semibold text-danger me-2">Xin chào, @Session["UserName"]</span>
+                        <span class="fw-semibold text-white me-2">Xin chào, @userName</span>
+                        <a class="btn btn-pink-outline" href="@Url.Action("DangXuat", "Account")">Đăng Xuất</a>
 
-                        <a class="btn btn-outline-danger" href="@Url.Action("DangXuat", "Account")">
-                            Đăng Xuất
-                        </a>
-
-                        <!-- Wishlist icon -->
-                        <span class="icon-btn">♡</span>
+                        <!-- Wishlist / Quản lý tài khoản -->
+                        <a class="icon-btn" href="@Url.Action("QuanLy", "Home")" title="Quản lý tài khoản & đơn hàng">♡</a>
 
                         <!-- Cart icon -->
-                    <div class="position-relative d-inline-block">
-                        <a href="@Url.Action("GioHang", "Home")" class="text-white fs-4">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                        <a href="/Home/GioHang"> 🛍</a>
-                        <span class="badge bg-danger cart-badge">0</span>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                            @(Session["SoLuongGioHang"] ?? 0)
-                        </span>
-                    </div>
-                                }
-                            </div>
+                        <div class="position-relative d-inline-block">
+                            <a href="@Url.Action("GioHang", "Home")" class="text-white fs-4">🛍</a>
+                            <span class="badge bg-danger cart-badge">@itemCount</span>
                         </div>
-                    </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
 
 
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
@@ -252,6 +125,20 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/Home/HoTroKhachHang">Liên hệ hỗ trợ</a>
                         </li>
+                        @{
+                            var role = Session["UserRole"] as string;
+                        }
+
+
+                        @if (Session["UserRole"] != null && Session["UserRole"].ToString() == "QuanTri" || Session["UserRole"] != null && Session["UserRole"].ToString() == "NhanVien")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-danger fw-bold" href="@Url.Action("QuanTriAdmin","Admin")">Quản Trị</a>
+                            </li>
+                        }
+
+
+
                     </ul>
                 </div>
             </div>
@@ -284,8 +171,8 @@
                     </div>
 
                     <!-- Logo -->
-                    <img src="https://cdn-icons-png.flaticon.com/512/720/720934.png"
-                         width="90" alt="logo">
+                    <img src="~/Content/Images/logo.png" width="90" alt="logo" />
+
                 </div>
 
                 <!-- SHOP -->
@@ -313,6 +200,12 @@
         </div>
     </footer>
     <script src="~/Content/JS/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/Content/JS/JavaScript.js"></script>
+    @RenderSection("Scripts", required: false)
+
+
+
 
 </body>
 </html>

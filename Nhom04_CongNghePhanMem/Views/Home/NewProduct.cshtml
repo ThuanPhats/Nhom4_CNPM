@@ -9,7 +9,7 @@
                 <div class="card-body text-center">
                     <h6 class="card-title">@sp.TENSP</h6>
                     <p class="card-text fw-bold">@sp.GIABAN.ToString("N0") VND</p>
-                    <a href="@Url.Action("XemChiTiet", "Home", new { id = sp.MASP })" class="btn btn-sm btn-outline-danger">
+                    <a href="@Url.Action("XemChiTiet", "Home", new { id = sp.MASP })" class="btn-pink-outline">
                         Xem chi tiết
                     </a>
                 </div>
@@ -18,3 +18,21 @@
     }
 
 </div>
+<style>
+    .btn-pink-outline {
+        background-color: white;
+        color: #e797b0 !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+        text-decoration: none; /* bỏ gạch chân */
+    }
+
+        .btn-pink-outline:hover {
+            background-color: #e797b0;
+            color: white !important;
+            text-decoration: none; /* bỏ gạch chân khi hover */
+        }
+</style>

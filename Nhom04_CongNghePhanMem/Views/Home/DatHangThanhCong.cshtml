@@ -1,35 +1,90 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "DatHangThanhCong";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<div class="container py-5 d-flex justify-content-center align-items-center" style="min-height: 70vh;">
-    <div class="card shadow-lg text-center p-4" style="max-width: 500px; border-radius: 20px;">
+@model string
 
-        <!-- Icon thành công -->
-        <div class="mb-3">
-            <i class="fa fa-check-circle text-success" style="font-size: 80px;"></i>
+<div class="container py-5 d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="card shadow-lg text-center p-5" style="max-width: 550px; border-radius: 25px; background: #fff0f6;">
+
+        <div class="mb-4">
+            <i class="bi bi-check-circle-fill text-success" style="font-size: 90px;"></i>
         </div>
 
-        <!-- Tiêu đề -->
-        <h2 class="fw-bold mb-3">Đặt hàng thành công!</h2>
+        <h2 class="fw-bold mb-2" style="color: #be185d;">Đặt hàng thành công!</h2>
 
-        <!-- Thông báo -->
-        <p class="text-muted mb-4" style="font-size: 1.1rem;">
+        @if (!string.IsNullOrEmpty(Model))
+        {
+            <p class="mb-3 fs-5">Mã đơn hàng của bạn: <strong class="text-danger">@Model</strong></p>
+        }
+
+        <p class="text-muted mb-4 fs-5">
             Cảm ơn bạn đã đặt hàng. Chúng tôi sẽ liên hệ bạn sớm nhất để xác nhận đơn hàng và tiến hành giao hàng.
         </p>
 
-        <!-- Nút hành động -->
-        <div class="d-flex justify-content-center gap-2 flex-wrap">
-            <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-lg px-4">
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="@Url.Action("Index", "Home")" class="btn btn-pink " >
                 Quay về trang chủ
             </a>
-            <a href="@Url.Action("GioHang", "CartSanPham")" class="btn btn-outline-secondary btn-lg px-4">
+
+
+
+            <a href="@Url.Action("GioHang", "Home")"
+               class="btn btn-pink-outline">
                 Xem giỏ hàng
             </a>
         </div>
-
     </div>
 </div>
+<style>
+    .btn-pink {
+        background-color: #e797b0;
+        color: white !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+    }
 
+        .btn-pink:hover {
+            background-color: #a0181c;
+            border-color: #a0181c;
+        }
+
+    .btn-pink-outline {
+        background-color: white;
+        color: #e797b0 !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+        text-decoration: none; /* bỏ gạch chân */
+    }
+
+        .btn-pink-outline:hover {
+            background-color: #e797b0;
+            color: white !important;
+            text-decoration: none; /* bỏ gạch chân khi hover */
+        }
+
+    .btn-custom {
+        background-color: #8ca0c4; /* màu nền xanh nhạt */
+        color: white; /* chữ màu trắng */
+        border: 2px solid #d35a5a; /* viền đỏ */
+        border-radius: 6px; /* bo góc */
+        font-weight: 600; /* chữ đậm vừa phải */
+        padding: 8px 20px; /* khoảng cách trên dưới và trái phải */
+        text-decoration: none; /* bỏ gạch chân */
+        display: inline-block;
+        transition: 0.3s;
+    }
+
+        .btn-custom:hover {
+            background-color: #7b90b8; /* màu nền tối hơn khi hover */
+            border-color: #a0181c; /* viền đỏ đậm hơn */
+            color: white;
+        }
+</style>

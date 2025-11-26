@@ -23,7 +23,7 @@
                     Khám phá phong cách thời trang của bạn
                 </p>
                 <div class="d-flex gap-3">
-                    <a href="/Home/SanPham" class="btn btn-primary btn-lg px-4 py-2 btn-hero" style="background: #7a0d0d">
+                    <a href="/Home/SanPham" class="btn btn-pink" >
                         Mua Ngay ✧
                     </a>
                 </div>
@@ -36,10 +36,10 @@
 
 
 <!-- ====================== DANH MỤC SẢN PHẨM ====================== -->
-<section class="py-5 text-center">
+<section class="py-5 text-center bg-light">
     <div class="container">
-        <h3 class="fw-bold mb-3">Danh Mục Sản Phẩm</h3>
-        <p class="mb-4">Chọn phong cách phù hợp với bạn</p>
+        <h3 class="fw-bold mb-3" style="color: #be185d;">Danh Mục Sản Phẩm</h3>
+        <p class="mb-4 text-muted fs-5">Chọn phong cách phù hợp với bạn</p>
         <div class="row g-4 justify-content-center">
             @foreach (var dm in Model
                     .Where(v => v.LOAISANPHAM != null)
@@ -47,11 +47,16 @@
                     .Distinct()
                     .Take(5))
             {
-                <div class="col-lg-2 col-md-3 col-sm-4">
-                    <a href="#" style="text-decoration: none;">
-                        <div class="card p-4 border-0 shadow-sm text-center">
-                            <img src="~/Content/Images/iconloaisp.jpg" class="mb-3" style="height:80px; width:80px;text-align:center" />                        
-                            <p class="fw-bold fs-6 mb-0">💗 @dm.TENLOAI</p>
+                <div class="col-lg-2 col-md-3 col-sm-4" >
+                    <a  class="text-decoration-none" href="@Url.Action("SanPham", "Home", new { categoryId = dm.MALOAI })">
+                        <div class="card p-4 border-0 shadow-sm text-center rounded-4 hover-card"
+                             style="transition: transform 0.3s, box-shadow 0.3s; background: #fff0f6;">
+                            <div class="icon mb-3">
+
+                                <img src="~/Content/Images/icon2.png" class="img-fluid " style="height:80px; width:80px;" />
+                            </div>
+                            
+                            <p class="fw-bold fs-6 mb-0 text-pink"  >💗 @dm.TENLOAI</p>
                         </div>
                     </a>
                 </div>
@@ -61,7 +66,7 @@
 </section>
 
 <!-- ====================== ƯU ĐIỂM ====================== -->
-<section class="py-5 bg-light">
+<section class="py-5 " style="background-color: #e797b0">
     <div class="container">
         <div class="row text-center g-4">
             <div class="col-6 col-lg-3">
@@ -100,7 +105,7 @@
                     <div class="card-img-overlay d-flex flex-column justify-content-center p-3" style="background: rgba(0,0,0,0.4);">
                         <h3 class="fw-bold">NỮ: Vẻ Đẹp Thanh Lịch</h3>
                         <p class="mb-0">Khám phá bộ sưu tập Ethereal</p>
-                        <a href="#women" class="stretched-link"></a>
+                        <a class="dropdown-item stretched-link" href="@Url.Action("BoSuuTap", "Home", new { phanLoai = "Nữ" })"></a>
                     </div>
                 </div>
 
@@ -110,7 +115,7 @@
                     <div class="card-img-overlay d-flex flex-column justify-content-center p-3" style="background: rgba(0,0,0,0.4);">
                         <h3 class="fw-bold">NAM: Phong Cách Smart Casual</h3>
                         <p class="mb-0">Trang phục công sở và dạo phố</p>
-                        <a href="#men" class="stretched-link"></a>
+                        <a class="dropdown-item stretched-link" href="@Url.Action("BoSuuTap", "Home", new { phanLoai = "Nam" })" ></a>
                     </div>
                 </div>
             </div>
@@ -122,7 +127,7 @@
                     <div class="card-img-overlay d-flex flex-column justify-content-center p-3" style="background: rgba(0,0,0,0.4);">
                         <h3 class="fw-bold">COUPLE: Phong Cách Đồng Điệu</h3>
                         <p class="mb-0">Mua sắm trang phục đôi mùa này</p>
-                        <a href="#couple" class="stretched-link"></a>
+                        <a class="dropdown-item stretched-link" href="@Url.Action("BoSuuTap", "Home", new { phanLoai = "Couple" })"></a>
                     </div>
                 </div>
             </div>
@@ -149,7 +154,22 @@
 </section>
 
 
+<style>
+    .btn-pink {
+        background-color: #e797b0;
+        color: white !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+    }
 
+        .btn-pink:hover {
+            background-color: #a0181c;
+            border-color: #a0181c;
+        }
+</style>
 
 
 

@@ -34,7 +34,7 @@
                     <textarea name="noiDungMoi" class="form-control" placeholder="Nhập nội dung yêu cầu..." rows="3"></textarea>
                 </div>
                 <div class="text-end">
-                    <button type="submit" class="btn btn-danger">Gửi yêu cầu</button>
+                    <button type="submit" class="btn-pink">Gửi yêu cầu</button>
                 </div>
             }
         </div>
@@ -91,3 +91,36 @@
 </div>
 
 
+<style>
+    .btn-pink {
+        background-color: #e797b0;
+        color: white !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+    }
+
+        .btn-pink:hover {
+            background-color: #a0181c;
+            border-color: #a0181c;
+        }
+
+    .btn-pink-outline {
+        background-color: white;
+        color: #e797b0 !important;
+        border: 2px solid #e797b0;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 8px;
+        transition: 0.25s;
+        text-decoration: none; /* bỏ gạch chân */
+    }
+
+        .btn-pink-outline:hover {
+            background-color: #e797b0;
+            color: white !important;
+            text-decoration: none; /* bỏ gạch chân khi hover */
+        }
+</style>
