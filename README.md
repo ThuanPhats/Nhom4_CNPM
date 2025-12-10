@@ -29,7 +29,7 @@ Press F5 in Visual Studio.
 We welcome contributions!
 
 **❤️ Special Thanks**
-Special appreciation to all team members who made this project possible:
+Appreciation to all team members who made this project possible:
 
 Nguyễn Thị Thùy Dương
 
