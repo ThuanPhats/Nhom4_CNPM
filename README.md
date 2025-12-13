@@ -22,6 +22,8 @@ Navigate to:
 cd Nhom4_CNPM/Nhom04_CongNghePhanMem
 Open the .sln file with Visual Studio.
 
+3. Fix the connection string
+
 4. Run the project
 Press F5 in Visual Studio.
 
