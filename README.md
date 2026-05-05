@@ -31,10 +31,6 @@ Press F5 in Visual Studio.
 We welcome contributions!
 
 **❤️ Special Thanks**
-Appreciation to all team members who made this project possible:
+Appreciation to all team members who made this project possible
 
-Nguyễn Thị Thùy Dương
 
-Trần Quốc Trường
-
-Trần Khánh Hưng
